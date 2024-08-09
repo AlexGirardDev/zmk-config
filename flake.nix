@@ -27,7 +27,13 @@
         pkgs.dtc
         pkgs.ninja
         pkgs.yq
+        pkgs.pipx
       ];
+
+      shellHook = ''
+        pipx install keymap-drawer
+      '';
+
     };
   };
 }
