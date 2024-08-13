@@ -1,0 +1,1 @@
+exa * | entr ./draw.sh
