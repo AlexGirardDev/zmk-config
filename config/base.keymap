@@ -103,17 +103,17 @@ ZMK_MOD_MORPH(smart_shft,
 };
 
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
-#define SMART_NUM &smart_num NUM 0
-ZMK_HOLD_TAP(smart_num,
-    flavor = "balanced";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <QUICK_TAP_MS>;
-    bindings = <&mo>, <&num_dance>;
-)
-ZMK_TAP_DANCE(num_dance,
-    tapping-term-ms = <200>;
-    bindings = <&num_word>, <&sl NUM>;  // reverse this for sticky-num on single tap
-)
+// #define SMART_NUM &smart_num NUM 0
+// ZMK_HOLD_TAP(smart_num,
+//     flavor = "balanced";
+//     tapping-term-ms = <200>;
+//     quick-tap-ms = <QUICK_TAP_MS>;
+//     bindings = <&mo>, <&num_dance>;
+// )
+// ZMK_TAP_DANCE(num_dance,
+//     tapping-term-ms = <200>;
+//     bindings = <&num_word>, <&sl NUM>;  // reverse this for sticky-num on single tap
+// )
 
 // reuse basic mod-morph scheme
 #define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2) \
@@ -173,7 +173,7 @@ ZMK_LAYER(new,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &kp SLASH     &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &lt FN SPACE  &lt NAV ESCAPE  X_MH     &smart_shft   SMART_NUM                                                 X_RH
+    X_LH                                               &lt FN SPACE  &lt NAV ESCAPE  X_MH     &smart_shft   &trans                                                 X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 ZMK_LAYER(nav,
