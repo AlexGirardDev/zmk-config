@@ -31,7 +31,7 @@ compatible with Zephyr 3.0 is available
 - nix-based [local build environment](#local-development-workspace) -- simply
   `cd` into your workspace and start building without any setup
 
-![](img/keymap.png)
+![](draw/keymap.png)
 
 ## Timeless homerow mods
 
@@ -297,7 +297,11 @@ environment is _completely isolated_ and won't pollute your system.
    echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
 
    # Enable nix-direnv (if installed in the previous step)
+   mkdir -p ~/.config/direnv
    echo 'source $HOME/.nix-profile/share/nix-direnv/direnvrc' >> ~/.config/direnv/direnvrc
+
+   # Optional: make direnv less verbose
+   echo '[global]\nwarn_timeout = "2m"\nhide_env_diff = true' >> ~/.config/direnv/direnv.toml
 
    # Source the bashrc to activate the hook (or start a new shell)
    source ~/.bashrc
@@ -313,15 +317,14 @@ environment is _completely isolated_ and won't pollute your system.
    git clone https://github.com/urob/zmk-config zmk-workspace
    ```
 
-2. If on `macOS`, edit `flake.nix` and replace `system = "x86_64-linux` with
-   `"x86_64-darwin"` (Intel processor) or `"aarch64-darwin"` (Apple silicon).
-
-3. Enter the workspace and set up the environment.
+2. Enter the workspace and set up the environment.
 
    ```bash
-   # This automatically sets up and activates a virtual shell with the Zephyr toolchain.
-   # This takes a while when entering the workspace for the first time.
+   # The first time you enter the workspace, you will be prompted to allow direnv
    cd zmk-workspace
+
+   # Allow direnv for the workspace, which will set up the environment
+   direnv allow
 
    # Initialize the Zephyr workspace and pull in the ZMK dependencies
    # (same as `west init -l config && west update && west zephyr-export`)
@@ -361,6 +364,14 @@ pristine build can be triggered with `just build all -p`.
 
 (For this particular example, there is also a `just clean` recipe, which clears
 the build cache. To list all available recipes, type `just`.)
+
+#### Drawing the keymap
+
+The build environment packages
+[keymap-drawer](https://github.com/caksoylar/keymap-drawer). `just draw` parses
+`base.keymap` and draws it to `draw/base.svg`. I haven't gotten around to
+tweaking the output yet, so for now this is just a demonstration of how to set
+things up.
 
 #### Hacking the firmware
 
