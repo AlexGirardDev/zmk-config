@@ -8,7 +8,7 @@
 #define X_LH  &trans    // thumb row, left
 
 #define X_RT  &trans      // top row, right
-#define X_RM  &trans  // middle row, right
+#define X_RM  &trans
 #define X_RB  &trans
 #define X_RH  &trans       // thumb row, right
 

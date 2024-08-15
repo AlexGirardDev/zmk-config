@@ -31,6 +31,7 @@
         pkgs.ninja
         pkgs.yq
         pkgs.pipx
+        pkgs.entr
       ];
 
       shellHook = ''
