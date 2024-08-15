@@ -1,6 +1,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-##include <behaviors/num_word.dtsi> // requires auto-layer module
+#include <behaviors/num_word.dtsi> // requires auto-layer module
 #if CONFIG_WIRELESS
     #include <dt-bindings/zmk/bt.h>
     #define _BT_SEL_KEYS_ &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR
