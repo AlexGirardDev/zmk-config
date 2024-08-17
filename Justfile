@@ -44,7 +44,7 @@ _parse_targets $expr:
 _build_single $board $shield *west_args:
     #!/usr/bin/env bash
     set -euo pipefail
-    artifact="${shield:+$shield-}${board}"
+    artifact="${shield:+${shield// /+}-}${board}"
     build_dir="{{ build / '$artifact' }}"
 
     echo "Building firmware for $artifact..."
@@ -71,6 +71,10 @@ build expr *west_args: _parse_combos
 # clear build cache and artifacts
 clean:
     rm -rf {{ build }} {{ out }}
+
+# clear all automatically generated files
+clean-all: clean
+    rm -rf .west zmk
 
 # clear nix cache
 clean-nix:
