@@ -139,7 +139,7 @@ ZMK_TAP_DANCE(num_dance,
 // SIMPLE_MORPH(comma_inner_morph, CTL, &kp SEMICOLON, &kp LESS_THAN)
 
 SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
-SIMPLE_MORPH(quote_dbl, SFT, &kp DQT, &kp S/)
+SIMPLE_MORPH(quote_dbl, SFT, &kp DQT, &kp SQT)
 
 SIMPLE_MORPH(semi_comma, SFT, &kp SEMI, &kp COMMA)
 SIMPLE_MORPH(colon_period, SFT, &kp COLON, &kp PERIOD)
@@ -194,9 +194,9 @@ ZMK_LAYER(new,
 )
 ZMK_LAYER(nav,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     ___           ___           &kp LS(TAB)   &swapper      ___             X_MT     &kp PG_UP     NAV_BSPC      ___           NAV_DEL       ___             X_RT
+    X_LT     ___           ___           &kp LS(TAB)   &swapper      ___             X_MT     ___           ___           &kp PG_DN   &kp PG_UP     ___            X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &sk LGUI      &sk LALT      &sk LSHFT     &sk LCTRL     ___             X_MM     &kp PG_DN     NAV_LEFT      NAV_DOWN      NAV_UP        NAV_RIGHT       X_RM
+    X_LM     &sk LGUI      &sk LALT      &sk LSHFT     &sk LCTRL     ___             X_MM     &kp LC(BSPC)  NAV_LEFT      &kp DOWN      &kp UP        NAV_RIGHT       X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     ___           ___           ___           ___           ___             X_MB     &kp INS       &kp TAB       &kp LT        &kp GT        ___             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
