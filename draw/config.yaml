@@ -299,7 +299,7 @@ draw_config:
         stroke-width: 0;
     }
     path.combo {
-        stroke-width: 1;
+        stroke-width: 2;
         stroke: var(--color--combo--dendron);
         stroke-dasharray: 2, 2;
         fill: none;
@@ -360,35 +360,6 @@ draw_config:
       translate: 25px -25px;
     }
 
-    /* Outer column + thumb keys */
-    .keypos-0,
-    .keypos-11,
-    .keypos-12,
-    .keypos-23,
-    .keypos-24,
-    .keypos-35,
-    .keypos-36,
-    .keypos-37,
-    .keypos-38,
-    .keypos-39,
-    .keypos-40,
-    .keypos-41 {
-        --color--key--bg: var(--color--material--blue-gray--100);
-        --color--key--border: var(--color--material--blue-gray--50);
-    }
-
-    .keypos-12 {
-        --color--key--bg: var(--color--material--red--300);
-        --color--key--border: var(--color--material--red--200);
-        --color--key--text--shifted: var(--color--key--text--tap);
-        --color--key--text--hold: var(--color--key--text--tap);
-    }
-
-    .keypos-23 {
-        --color--key--bg: var(--color--material--teal--200);
-        --color--key--border: var(--color--material--teal--100);
-    }
-
 parse_config:
 
   zmk_preamble: "#include <zmk-helpers/key-labels/34.h>"
@@ -413,12 +384,6 @@ parse_config:
     "&none":
       tap: $$mdi:minus-circle-outline$$
       type: none
-
-    # Whitespace
-    "&bkspc_del":
-      type: backspace
-      tap: $$mdi:backspace$$
-      shifted: $$mdi:backspace-reverse-outline$$
 
     # Bluetooth
     "&bt BT_SEL 0":
@@ -452,6 +417,43 @@ parse_config:
       tap: $$mdi:backup-restore$$
     "&bootloader":
       tap: $$mdi:progress-download$$
+
+
+      #mouse
+    '&msc SCRL_UP': '$$mdi:mouse-move-up$$'
+    '&msc SCRL_DOWN': '$$mdi:mouse-move-down$$'
+    '&mmv MOVE_LEFT':
+      tap:     $$mdi:tortoise$$
+      shifted: $$mdi:arrow-left$$
+      type:    sym_by_sym
+    '&mmv MOVE_RIGHT':
+      tap:     $$mdi:tortoise$$
+      shifted: $$mdi:arrow-right$$
+      type:    sym_by_sym
+    '&mmv MOVE_UP':
+      tap:     $$mdi:tortoise$$
+      shifted: $$mdi:arrow-up$$
+      type:    sym_by_sym
+    '&mmv MOVE_DOWN':
+      tap:     $$mdi:tortoise$$
+      shifted: $$mdi:arrow-down$$
+      type:    sym_by_sym
+    '&fmmv MOVE_LEFT':
+      tap:     $$mdi:mouse$$
+      shifted: $$mdi:arrow-left$$
+      type:    sym_by_sym
+    '&fmmv MOVE_RIGHT':
+      tap:     $$mdi:mouse$$
+      shifted: $$mdi:arrow-right$$
+      type:    sym_by_sym
+    '&fmmv MOVE_UP':
+      tap:     $$mdi:mouse$$
+      shifted: $$mdi:arrow-up$$
+      type:    sym_by_sym
+    '&fmmv MOVE_DOWN':
+      tap:     $$mdi:mouse$$
+      shifted: $$mdi:arrow-down$$
+      type:    sym_by_sym
 
   # ZMK
   zmk_keycode_map:
@@ -678,6 +680,10 @@ parse_config:
       align: top
       offset: 0.25
       key: mouse
+    combo_lc_bspc:
+      align: bottom
+      offset: 0.05
+
 
     
     
