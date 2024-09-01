@@ -1,3 +1,7 @@
+# 
+# https://pictogrammers.com/library/mdi/
+#
+#
 draw_config:
   footer_text: "urob/zmk-config"
   dark_mode: auto
@@ -418,6 +422,9 @@ parse_config:
     "&bootloader":
       tap: $$mdi:progress-download$$
 
+      
+    "&key_repeat":
+      tap: $$mdi:repeat-variant$$
 
       #mouse
     '&msc SCRL_UP': '$$mdi:mouse-move-up$$'
@@ -529,6 +536,9 @@ parse_config:
     DOT:
       tap: "."
       shifted: ">"
+    PERIOD:
+      tap: "."
+      shifted: ">"
     COMMA:
       tap: ","
       shifted: "<"
@@ -614,6 +624,9 @@ parse_config:
     ENTER:
       type: enter
       tap: $$mdi:keyboard-return$$
+    RETURN:
+      type: enter
+      tap: $$mdi:keyboard-return$$
     ESC: $$mdi:keyboard-esc$$
     TAB: $$mdi:keyboard-tab$$
     LS(TAB): $$mdi:keyboard-tab-reverse$$
@@ -621,9 +634,12 @@ parse_config:
     BACKSPACE:
       type: backspace
       tap: $$mdi:backspace$$
-    # BSPC:
-    #   type: backspace
-    #   tap: $$mdi:backspace$$
+    BSPC:
+      type: backspace
+      tap: $$mdi:backspace$$
+    LC(BSPC): ^BSPC 
+    LC(TAB): ^tab 
+    LC(LS(TAB)): ^TAB
     DELETE: $$mdi:backspace-reverse-outline$$
     DEL: $$mdi:backspace-reverse-outline$$
 
@@ -654,6 +670,8 @@ parse_config:
     C_AL_LOCK: $$mdi:lock$$
     K_CANCEL: $$mdi:close-box$$
 
+    PSCRN: $$mdi:monitor-screenshot$$
+
     # Zoom
     RG(RS(A)):
       tap: $$mdi:microphone$$
@@ -682,11 +700,7 @@ parse_config:
       key: mouse
     combo_lc_bspc:
       align: bottom
-      offset: 0.05
-
-
-    
-    
+      offset: 0.03
     combo_minus:
       key:
         shifted: "_"
