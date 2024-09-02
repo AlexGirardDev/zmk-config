@@ -28,11 +28,11 @@ ZMK_COMBO(pipe,  &pipe,      LT2 LT1,     DEF        , COMBO_TERM_FAST, COMBO_ID
 ZMK_COMBO(tilde,  &tilde,      LT3 LT2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 ZMK_COMBO(enter, &kp RETURN,    LM3 LM2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(bspc,  &kp BSPC,      LM2 LM1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(esc,  &kp ESCAPE,      LM2 LM1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(lc_bspc,  &kp LC(BSPC),      LM2 LM0,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
- // ZMK_COMBO(del,   ___,           LB3 LB2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
- ZMK_COMBO(repeat,   &key_repeat,       LB2 LB1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ ZMK_COMBO(tab,   &kp TAB,           LB3 LB2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ ZMK_COMBO(repeat,&key_repeat,       LB2 LB1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 ZMK_COMBO(copy,  &kp LC(C),     LB4 LB3,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(paste, &kp LC(V),     LB1 LB0,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
