@@ -159,8 +159,16 @@ ZMK_HOLD_TAP(lt_spc,
     bindings = <&mo>, <&spc_morph>;
 )
 
+ZMK_HOLD_TAP(lt_bspc,
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    bindings = <&mo>, <&bspc_morph>;
+)
+
 SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &kp ESCAPE)
-SIMPLE_MORPH(bspc_morph, SFT, &kp BSPC, &kp ESCAPE)
+
+SIMPLE_MORPH(bspc_morph, GUI, &kp BSPC, &kp ESCAPE)
 
 ZMK_MACRO(dot_spc,
     wait-ms = <0>;
@@ -187,7 +195,6 @@ ZMK_TRI_STATE(swapper,
 )
 // misc aliases
 #define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
-
 /* Keymap */
 
 ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)  // FN + NUM --> SYS
@@ -200,7 +207,7 @@ ZMK_LAYER(new,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &kp SLASH     &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &lt FN SPACE  &lt NAV &bspc_morph X_MH     &smart_shft  SMART_NUM                                                 X_RH
+    X_LH                                            &lt_spc SYS 0 &lt_bspc NAV 0     X_MH     &smart_shft  SMART_NUM                                                 X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 ZMK_LAYER(nav,
