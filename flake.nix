@@ -37,6 +37,7 @@
               pkgs.dtc
               pkgs.ninja
               pkgs.qemu # needed for native_posix target
+              pkgs.tio # needed for native_posix target
 
               # Uncomment these if you don't have system-wide versions:
               # pkgs.gawk             # awk
