@@ -48,7 +48,8 @@ _build_single $board $shield *west_args:
     build_dir="{{ build / '$artifact' }}"
 
     echo "Building firmware for $artifact..."
-    west build -s zmk/app -d "$build_dir" -b $board {{ west_args }} -- \
+    #west build -S zmk-usb-logging -s zmk/app -d "$build_dir" -b $board {{ west_args }} -- \
+    west build  -s zmk/app -d "$build_dir" -b $board {{ west_args }} -- \
         -DZMK_CONFIG="{{ config }}" ${shield:+-DSHIELD="$shield"}
 
     if [[ -f "$build_dir/zephyr/zmk.uf2" ]]; then
