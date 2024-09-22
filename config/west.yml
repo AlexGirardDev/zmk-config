@@ -26,6 +26,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: urob
       url-base: https://github.com/urob
+    # - name: alex
+    #   url-base: https://github.com/alexgirarddev
 
   projects:
     - name: zmk-helpers
@@ -42,6 +44,8 @@ manifest:
     # Zephyr with a path other than `zephyr` (as in `going-modular`).
     - name: zmk
       revision: going-modular
+      # revision: going-modular-with-turbo
+      # remote: alex
       path: .
       import:
         file: app/west.yml
