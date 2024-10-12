@@ -170,12 +170,23 @@ SIMPLE_MORPH(quote_dbl, SFT, &kp DQT, &kp SQT)
 
 SIMPLE_MORPH(semi_comma, SFT, &kp SEMI, &kp COMMA)
 SIMPLE_MORPH(colon_period, SFT, &kp COLON, &kp PERIOD)
+
+SIMPLE_MORPH(tilde_grave, SFT, &kp TILDE, &kp GRAVE)
+
+SIMPLE_MORPH(bspc_delete, SFT, &kp BSPC, &kp DEL)
 // tap: space | shift + tap: dot -> space -> sticky shift | hold: activate layer
 ZMK_HOLD_TAP(lt_spc,
     flavor = "balanced";
     tapping-term-ms = <200>;
     quick-tap-ms = <QUICK_TAP_MS>;
     bindings = <&mo>, <&spc_morph>;
+)
+
+ZMK_HOLD_TAP(lt_bspc,
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    bindings = <&mo>, <&bspc_delete>;
 )
 
 SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &kp ESCAPE)
@@ -218,9 +229,10 @@ ZMK_LAYER(new,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &kp SLASH     &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                            &lt_spc FN 0 &lt NAV BSPC     X_MH        &sl SYMBOL   &smart_shft                                                  X_RH
+    X_LH                                            &lt_spc FN 0 &lt_bspc NAV 0     X_MH        &sl SYMBOL   &smart_shft                                                  X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
+
 ZMK_LAYER(nav,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
     X_LT     ___           &kp LC(TAB)   &kp LC(LS(TAB))   ___        ___            X_MT     ___           ___           &kp PG_DN     &kp PG_UP     ___            X_RT
@@ -285,11 +297,12 @@ ZMK_LAYER(sys,
 
 ZMK_LAYER(symbol,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     ___           ___           ___           ___           ___             X_MT     &kp BSLH     &kp MINUS      &kp EQUAL     &kp  UNDER     &kp PLUS      X_RT
+    X_LT     ___           ___           ___           ___           ___             X_MT     &tilde_grave     &kp MINUS      &kp EQUAL     &kp  UNDER     &kp PLUS      X_RT
+
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &sk LALT      &sk LGUI      &sk LCTRL     &sk LSHFT     ___             X_MM     &kp LT       &kp LPAR       &kp LBRC     &kp LBKT         &kp TILDE       X_RM
+    X_LM     &sk LALT      &sk LGUI      &sk LCTRL     &sk LSHFT     ___             X_MM     &kp LT       &kp LPAR       &kp LBRC     &kp LBKT         &kp BSLH       X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     ___           ___           ___           ___           ___             X_MB     &kp GT       &kp RPAR       &kp RBRC     &kp RBKT      &kp GRAVE             X_RB
+    X_LB     ___           ___           ___           ___           ___             X_MB     &kp GT       &kp RPAR       &kp RBRC     &kp RBKT      &kp PIPE             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
