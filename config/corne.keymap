@@ -2,15 +2,15 @@
 #include "zmk-helpers/key-labels/42.h"
 
 /* map Corne's extra keys */
-#define X_LT  &trans
-#define X_LM  &trans
-#define X_LB  &trans
+#define X_LT  &kp TAB
+#define X_LM  &kp ESC
+#define X_LB  &smart_shft 
 #define X_LH  &trans    // thumb row, left
 
-#define X_RT  &trans      // top row, right
-#define X_RM  &trans
-#define X_RB  &trans
-#define X_RH  &trans       // thumb row, right
+#define X_RT  &kp PIPE      // top row, right
+#define X_RM  &kp RETURN
+#define X_RB  &smart_shft
+#define X_RH  &smart_shft      // thumb row, right
 
 /* activate bluetooth */
 #define CONFIG_WIRELESS 1
