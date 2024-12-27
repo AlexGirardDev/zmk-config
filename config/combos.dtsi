@@ -22,7 +22,8 @@
 
 /* Horizontal combos - left hand */
 
-ZMK_COMBO(mouse,  &smart_mouse, LT3 LT1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// ZMK_COMBO(mouse,  &smart_mouse, LT3 LT1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// ZMK_COMBO(enter,  &kp LGUI(ENTER), LM3 LM1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 // ZMK_COMBO(pipe,  &pipe,      LT2 LT1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 // ZMK_COMBO(tilde,  &tilde,      LT3 LT2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
@@ -33,14 +34,14 @@ ZMK_COMBO(mouse,  &smart_mouse, LT3 LT1,     DEF        , COMBO_TERM_FAST, COMBO
  // ZMK_COMBO(tab,   &kp TAB,           LB3 LB2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
  // ZMK_COMBO(repeat,&key_repeat,       LB2 LB1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-// ZMK_COMBO(copy,  &kp LC(C),     LB4 LB3,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-// ZMK_COMBO(paste, &kp LC(V),     LB1 LB0,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-// ZMK_COMBO(cut,   &kp LC(X),     LB4 LB0,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(copy,  &kp LC(C),     LB3 LB2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(paste, &kp LC(V),     LB2 LB1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(cut,   &kp LC(X),     LB3 LB1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 // /* Horizontal combos - right hand */
 // ZMK_COMBO(under, &under_dash,     RT1 RT2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 // ZMK_COMBO(equal, &kp EQUAL,     RT2 RT3,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-// //l_paran
+//l_paran
 // ZMK_COMBO(lpar,  &l_paran,      RM1 RM2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 // ZMK_COMBO(rpar,  &r_paran,      RM2 RM3,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 //

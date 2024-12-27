@@ -20,7 +20,7 @@
 #define SYS 4
 #define SYMBOL 5
 #define MOUSE 6
-#define QWERTY 7
+#define GAME 7
 
 #include "combos.dtsi"  // requires layer aliases
 #include "mouse.dtsi"
@@ -50,9 +50,15 @@
 
 /* Homerow mods */
 
+#ifndef KEYS_L
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4  // left hand
+#endif
+#ifndef KEYS_R
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4  // right hand
+#endif
+#ifndef THUMBS
 #define THUMBS LH1 LH0 RH0 RH1                                       // thumbs
+#endif
 
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS) \
     ZMK_HOLD_TAP(NAME, \
@@ -353,14 +359,19 @@ ZMK_LAYER(mouse,
 )
 
 // CUSTOM_GAME
-ZMK_LAYER(qwert,
+ZMK_LAYER(game,
+#ifdef CUSTOM_GAME
+CUSTOM_GAME
+#else
+
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &kp Q         &kp W         &kp E         &kp R         &kp T           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P           X_RT
+    X_LT     ___           ___           ___           ___           ___             X_MT     ___           ___           U_WH_D         U_WH_U           ___            X_RT
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────j ├──────┤
+    X_LM     ___           ___           ___           ___           ___             X_MM     ___           U_MS_L       U_MS_D        U_MS_U       U_MS_R        X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &kp A         &kp S         &kp D         &kp F         &kp G           X_MM     &kp H         &kp J         &kp K         &kp L         &kp SEMI     X_RM
-//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &kp Z         &kp X         &kp C         &kp V         &kp B           X_MB     &kp N         &kp M         &kp COMMA         &kp PERIOD         &kp SLASH           X_RB
+    X_LB     ___           ___           ___           ___           ___             X_MB     ___           &mkp MB4      &mkp MCLK      &mkp MB5     ___             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &kp SPACE     &kp LSHIFt             X_MH     ___           ___                                                       X_RH
+    X_LH                                               ___           ___             X_MH     &mkp LCLK     &mkp RCLK                                                 X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
+#endif
 )

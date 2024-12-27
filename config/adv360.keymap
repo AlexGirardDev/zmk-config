@@ -11,8 +11,8 @@
                  ╰───────╮ 67 │ 68 ╭───────╯                                 ╰───────╮ -- │ -- ╭───────╯
                          ╰────┴────╯                                                 ╰────┴────╯ */
 
-#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4  // left hand
-#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4  // right hand
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5  // left hand
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5 // right hand
 
 #define LH0 65  // left thumb keys
 #define LH1 66
@@ -103,39 +103,28 @@
 #define X_MM    &kp F5 &none &none &none &none &kp F11
 #define X_RM    &kp RETURN
 
-#define X_LB    &kp LCTRL
+#define X_LB    &none
 #define X_MB    &none &none
 #define X_RB    &none
 
 #define X_LH    &none &none &none &none &none
-#define X_MH    &tog QWERTY  SMART_NUM
+#define X_MH    &tog GAME  SMART_NUM
 #define X_RH    &none &none &none &none &none
 
 
 
-// #define CUSTOM_GAME X_LT     &kp Q         &kp W         &kp E         &kp R         &kp T           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P           X_RT \
-// //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-//     X_LM     &kp A         &kp S         &kp D         &kp F         &kp G           X_MM     &kp H         &kp J         &kp K         &kp L         &kp SEMI     X_RM \
-// //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-//     X_LB     &kp Z         &kp X         &kp C         &kp V         &kp B           X_MB     &kp N         &kp M         &kp COMMA         &kp PERIOD         &kp SLASH           X_RB \
-// //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-//     X_LH                                               &kp SPACE     &kp LSHIFt             X_MH     ___           ___                                                       X_RH \
-//╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
-// ZMK_LAYER(sys,
-//         base_layer {
-//             bindings = <
-//                 &kp EQUAL &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &tog KEYPAD    &mo MOD   &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
-//                 &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &to QWERTY     &tog MS   &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSLH
-//                 &kp ESC   &kp A     &kp S     &kp D     &kp F     &kp G     &to COLEMAK    &none     &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-//                 &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B                              &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT
-//                 &mo FN    &kp GRAVE &kp CAPS  &kp LEFT  &kp RIGHT                                              &kp UP    &kp DOWN  &kp LBKT  &kp RBKT  &mo FN
-//                                                                   &kp LCTRL &kp LALT       &kp LGUI  &kp RCTRL
-//                                                         &kp BSPC  &kp DEL   &kp HOME       &kp PG_UP &kp ENTER &kp SPACE
-//                                                                             &kp END        &kp PG_DN
-//             >;
-//         };
-//╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
+
+#define CONFIG_WIRELESS 1
+
+#define CUSTOM_GAME \
+&kp GRAVE  &kp N1     &kp N2     &kp N3      &kp N4  &kp N5  &kp F12                                                                &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
+&kp TAB    &kp SQT    &kp COMMA  &kp PERIOD  &kp P   &kp Y   &kp F6                                                                 &kp F10   &kp F   &kp G          &kp C   &kp R     &kp L      ___ \
+    &kp ESC    &kp A      &kp O      &kp E   &kp U   &kp I   &kp F5     ___       &kp LALT      ___         ___                      &kp F11  &kp D   &kp H          &kp T   &kp N     &kp S      &kp ENTER \
+&kp LSHFT  &kp SLASH  &kp Q      &kp J       &kp K   &kp X                        &kp DEL       &kp PRINTSCREEN                               &kp B   &kp M          &kp W   &kp V     &kp Z      ___ \
+&kp LCTRL  &kp UP     &kp DOWN   &kp LBKT    &kp N9          &kp SPACE  &kp BSPC  &to DEF     &kp LGUI      &kp LSHFT              &kp LWIN        ___  &none   &kp LEFT  &kp RIGHT  &kp K_APP \
+
 /* source the main keymap */
+
 /* activate bluetooth */
 #define CONFIG_WIRELESS 1
 
