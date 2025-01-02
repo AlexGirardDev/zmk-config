@@ -1,4 +1,5 @@
 # This file specifies the build dependencies for Github Action workflows and
+#
 # for local build environments. The workspace has three toplevel directories
 # containing the user config, user modules and ZMK. Zephyr and its dependencies
 # are namespaced under /zmk to keep the toplevel clean.
