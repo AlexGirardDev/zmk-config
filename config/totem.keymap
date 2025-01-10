@@ -25,11 +25,11 @@
 #include "zmk-helpers/key-labels/totem.h"
 
 /* map Corne's extra keys */
-#define X_LB  &trans
-#define X_LH  &trans    // thumb row, left
+#define X_LB  &kp TAB
+#define X_LH  &kp ESC    // thumb row, left
 
-#define X_RB  &trans
-#define X_RH  &trans      // thumb row, right
+#define X_RB  &kp RETURN
+#define X_RH  SMART_NUM      // thumb row, right
 
 /* activate bluetooth */
 #define CONFIG_WIRELESS 1
