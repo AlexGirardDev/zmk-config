@@ -98,7 +98,7 @@
 #define X_MT    &kp F6 &kp F10
 #define X_RT    &kp BSLH
 
-#define X_LM    &kp ESC
+#define X_LM    &none
 //                      64?   65?   66?   67?
 #define X_MM    &kp F5 &none &none &none &none &kp F11
 #define X_RM    &kp RETURN
