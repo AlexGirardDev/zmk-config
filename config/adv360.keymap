@@ -96,7 +96,7 @@
                 &kp TAB
 
 #define X_MT    &kp F6 &kp F10
-#define X_RT    &kp BSLH
+#define X_RT    &none
 
 #define X_LM    &none
 //                      64?   65?   66?   67?

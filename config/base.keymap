@@ -201,6 +201,15 @@ ZMK_HOLD_TAP(lt_bspc,
 
 SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &kp ESCAPE)
 
+// SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &kp ESCAPE)
+// 3IMPLE_MORPH(spc_morph, SFT, &kp SPACE, &kp ESCAPE)
+
+// 3IMPLE_MORPH(spc_morph, SFT, &kp SPACE, &kp ESCAPE)
+//
+ SIMPLE_MORPH(bad_paste, CTL, &kp V, &none)
+ SIMPLE_MORPH(bad_copy, CTL, &kp C, &none)
+ SIMPLE_MORPH(bad_undo, CTL, &kp Z, &none)
+
 
 ZMK_MACRO(dot_spc,
     wait-ms = <0>;
@@ -211,7 +220,7 @@ ZMK_MACRO(dot_spc,
 // tap: copy | double-tap: cut
 ZMK_TAP_DANCE(copy_cut,
     tapping-term-ms = <200>;
-    bindings = <&kp LC(INS)>, <&kp LC(X)>;
+    bindings = <&kp LC(C)>, <&kp LC(X)>;
 )
 
 // Windows sleep key
@@ -233,27 +242,26 @@ ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)  // FN + NUM --> SYS
 
 ZMK_LAYER(new,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &quote_dbl    &semi_comma   &colon_period &kp P         &kp Y           X_MT     &kp F         &kp G         &kp C         &kp R         &kp L           X_RT
+    X_LT     &quote_dbl    &semi_comma   &colon_period &kp P         &kp Y           X_MT     &kp F         &kp G         &bad_copy         &kp R         &kp L           X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     // X_LM     &hml LALT A   &hml LGUI O   &hml LCTRL E  &hml LSHFT U  &kp I           X_MM     &kp D         &hmr LSHFT H  &hmr LCTRL T  &hmr LGUI N   &hmr LALT S     X_RM
     X_LM     &hml LALT A   &hml LGUI O   &hml LCTRL E  &kp U        &kp I           X_MM     &kp D          &kp H          &hmr LCTRL T  &hmr LGUI N   &hmr LALT S     X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &kp SLASH     &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
+    X_LB     &kp SLASH     &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &bad_paste         &bad_undo           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &lt_spc FN 0 &lt_bspc NAV BSPC     X_MH     &sl SYMBOL   &smart_shft                                                  X_RH
+    X_LH                                               &lt FN SPACE &lt_bspc NAV BSPC     X_MH     &sl SYMBOL   &smart_shft                                                  X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
 ZMK_LAYER(nav,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     ___           &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)    ___            X_MT     ___            &kp HOME      &kp PG_DN     &kp PG_UP     &kp END         X_RT
+    X_LT     &kp LG(GRAVE)           &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)    ___            X_MT     ___            &kp HOME      &kp PG_DN     &kp PG_UP     &kp END         X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &sk LALT      &sk LGUI      &sk LCTRL     &sk LSHFT     &kp ESC             X_MM     &kp LA(C)           &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT       X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &kp LC(A)     &kp LC(C)     &kp LC(V)     &kp LC(X)      ___             X_MB     ___           ___           ___           ___           ___             X_RB
-
+    X_LB    &kp LC(Z)      &kp LC(A)     &copy_cut     &kp LC(V)     ___             X_MB     ___           ___           ___           ___           ___             X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               ___           ___             X_MH     ___           CANCEL                                                    X_RH
+    X_LH                                               ___           ___             X_MH     ___           ___                                                    X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 

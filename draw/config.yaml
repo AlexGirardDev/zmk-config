@@ -233,7 +233,7 @@ draw_config:
          */
 
         font-family: REM,SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-        font-size: 44px;
+        font-size: 24px;
         font-kerning: normal;
         text-rendering: optimizeLegibility;
         fill: var(--color--text);

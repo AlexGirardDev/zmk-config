@@ -29,14 +29,14 @@
 // ZMK_COMBO(tilde,  &tilde,      LT3 LT2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 //ZMK_COMBO(enter, &kp RETURN,    LM3 LM2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-// ZMK_COMBO(escape,  &kp ESCAPE,      LM2 LM1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ ZMK_COMBO(escape,  &kp ESCAPE,      LM2 LM1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
  // ZMK_COMBO(tab,   &kp TAB,           LB3 LB2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
  // ZMK_COMBO(repeat,&key_repeat,       LB2 LB1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-ZMK_COMBO(copy,  &kp LC(C),     LB3 LB2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(paste, &kp LC(V),     LB2 LB1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(cut,   &kp LC(X),     LB3 LB1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// ZMK_COMBO(copy,  &kp LC(C),     LB3 LB2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// ZMK_COMBO(paste, &kp LC(V),     LB2 LB1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// ZMK_COMBO(cut,   &kp LC(X),     LB3 LB1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 // /* Horizontal combos - right hand */
 // ZMK_COMBO(under, &under_dash,     RT1 RT2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
