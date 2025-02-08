@@ -209,6 +209,7 @@ SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &kp ESCAPE)
  SIMPLE_MORPH(bad_paste, CTL, &kp V, &none)
  SIMPLE_MORPH(bad_copy, CTL, &kp C, &none)
  SIMPLE_MORPH(bad_undo, CTL, &kp Z, &none)
+ SIMPLE_MORPH(bad_tab_close, CTL, &kp W, &none)
 
 
 ZMK_MACRO(dot_spc,
@@ -247,7 +248,7 @@ ZMK_LAYER(new,
     // X_LM     &hml LALT A   &hml LGUI O   &hml LCTRL E  &hml LSHFT U  &kp I           X_MM     &kp D         &hmr LSHFT H  &hmr LCTRL T  &hmr LGUI N   &hmr LALT S     X_RM
     X_LM     &hml LALT A   &hml LGUI O   &hml LCTRL E  &kp U        &kp I           X_MM     &kp D          &kp H          &hmr LCTRL T  &hmr LGUI N   &hmr LALT S     X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &kp SLASH     &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &bad_paste         &bad_undo           X_RB
+    X_LB     &kp SLASH     &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &bad_tab_close         &bad_paste         &bad_undo           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               &lt FN SPACE &lt_bspc NAV BSPC     X_MH     &sl SYMBOL   &smart_shft                                                  X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
