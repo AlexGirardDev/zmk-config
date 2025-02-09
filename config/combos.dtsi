@@ -70,8 +70,17 @@
 // ZMK_COMBO(fslh,  &kp EXCL,      RM2 RB2,     DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 // ZMK_COMBO(pipe,  &kp PIPE,      RM3 RB3,     DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 
-ZMK_COMBO(boot,  &bootloader,   RT4 RM4 RB4 ,  DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(boot,  &sys_reset,   RT3 RM3 RB3 ,  DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(boot,  &bootloader,   LT4 LM4 LB4 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(boot2,  &bootloader,   RT4 RM4 RB4 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+// ZMK_COMBO(boot,  &sys_reset,   RT3 RM3 RB3 ,  DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 
+// #define DEF 0
+// #define NAV 1
+// #define NUM 2
+// #define FN 3
+// #define SYS 4
+// #define SYMBOL 5
+// #define MOUSE 6
+// #define GAME 7
 
 

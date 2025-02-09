@@ -240,6 +240,7 @@ ZMK_TRI_STATE(swapper,
 /* Keymap */
 
 ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)  // FN + NUM --> SYS
+ZMK_CONDITIONAL_LAYER(sys2, NAV SYMBOL, SYS)  // FN + NUM --> SYS
 
 ZMK_LAYER(new,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
