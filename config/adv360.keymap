@@ -95,12 +95,12 @@
 #define X_LT    &none &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp F12     &kp F9 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &none \
                 &kp TAB
 
-#define X_MT    &kp F6 &kp F10
+#define X_MT    &none &none 
 #define X_RT    &none
 
 #define X_LM    &none
 //                      64?   65?   66?   67?
-#define X_MM    &kp F5 &none &none &none &none &kp F11
+#define X_MM    &none &none &none &none &none &none
 #define X_RM    &kp RETURN
 
 #define X_LB    &none
