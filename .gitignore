@@ -1,9 +1,9 @@
 .build
 .direnv
-.venv
 .west
 modules
 firmware
+zephyr
 zmk
 .idea
 # Ignore keymap-drawer output for now

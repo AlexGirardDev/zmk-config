@@ -1,56 +1,58 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Version of requirements.txt installed in pythonEnv
-    zephyr.url = "github:zephyrproject-rtos/zephyr/v3.5.0";
+    # This pins requirements.txt provided by zephyr-nix.pythonEnv.
+    zephyr.url = "github:zmkfirmware/zephyr/v3.5.0+zmk-fixes";
     zephyr.flake = false;
 
-    # Zephyr sdk and toolchain
+    # Zephyr sdk and toolchain.
     zephyr-nix.url = "github:urob/zephyr-nix";
     zephyr-nix.inputs.zephyr.follows = "zephyr";
-    # Relies on 23.11 to provide py38 until zephyr-sdk bumps the requirement
-    # https://github.com/zephyrproject-rtos/sdk-ng/issues/752
-    # zephyr-nix.inputs.nixpkgs.follows = "nixpkgs";
+    zephyr-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, zephyr-nix, ... }:
-    let
-      systems = [ "x86_64-linux" ];
-      forAllSystems = nixpkgs.lib.genAttrs systems;
-    in {
-      devShells = forAllSystems (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-          zephyr = zephyr-nix.packages.${system};
-          keymap_drawer = pkgs.python3Packages.callPackage ./draw { };
-
-        in {
-          default = pkgs.mkShell {
-            packages = [
-              keymap_drawer
-
+  outputs = { nixpkgs, zephyr-nix, ... }: let
+    systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+    forAllSystems = nixpkgs.lib.genAttrs systems;
+  in {
+    devShells = forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+        zephyr = zephyr-nix.packages.${system};
+        keymap_drawer = pkgs.python3Packages.callPackage ./nix/keymap-drawer.nix {};
+      in {
+        default = pkgs.mkShellNoCC {
+          packages =
+            [
               zephyr.pythonEnv
-              (zephyr.sdk.override { targets = [ "arm-zephyr-eabi" ]; })
+              (zephyr.sdk-0_16.override {targets = ["arm-zephyr-eabi"];})
 
               pkgs.cmake
               pkgs.dtc
               pkgs.ninja
-              pkgs.qemu # needed for native_posix target
-              pkgs.tio # needed for native_posix target
 
-              # Uncomment these if you don't have system-wide versions:
-              # pkgs.gawk             # awk
-              # pkgs.unixtools.column # column
-              # pkgs.coreutils        # cp, cut, echo, mkdir, sort, tail, tee, uniq, wc
-              # pkgs.diffutils        # diff
-              # pkgs.findutils        # find, xargs
-              # pkgs.gnugrep          # grep
-              pkgs.just # just
-              # pkgs.gnused           # sed
-              pkgs.yq # yq
+              pkgs.just
+              pkgs.yq # Make sure yq resolves to python-yq.
+
+              keymap_drawer
+
+              # -- Used by just_recipes and west_commands. Most systems already have them. --
+              # pkgs.gawk
+              # pkgs.unixtools.column
+              # pkgs.coreutils # cp, cut, echo, mkdir, sort, tail, tee, uniq, wc
+              # pkgs.diffutils
+              # pkgs.findutils # find, xargs
+              # pkgs.gnugrep
+              # pkgs.gnused
             ];
-          };
-        });
-    };
+
+          shellHook = ''
+            export ZMK_BUILD_DIR=$(pwd)/.build;
+            export ZMK_SRC_DIR=$(pwd)/zmk/app;
+          '';
+        };
+      }
+    );
+  };
 }
