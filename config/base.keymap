@@ -154,7 +154,6 @@ ZMK_TAP_DANCE(num_dance,
 //     };
 // };
 
-
 SIMPLE_MORPH(tilde, SFT, &kp TILDE, &kp GRAVE)
 SIMPLE_MORPH(pipe, SFT, &kp PIPE, &kp BSLH)
 
@@ -236,7 +235,6 @@ ZMK_TRI_STATE(swapper,
 //ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)  // FN + NUM --> SYS
 //ZMK_CONDITIONAL_LAYER(sys2, NAV SYMBOL, SYS)  // FN + NUM --> SYS
 
-
 ZMK_LAYER(new,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
     X_LT     &quote_dbl    &semi_comma   &colon_period &kp P         &kp Y           X_MT     &kp F         &kp G         &bad_copy         &kp R         &kp L           X_RT
@@ -252,7 +250,7 @@ ZMK_LAYER(new,
 
 ZMK_LAYER(nav,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &kp LG(GRAVE)           &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)    ___            X_MT     ___            &kp HOME      &kp PG_DN     &kp PG_UP     &kp END         X_RT
+    X_LT     &kp LG(GRAVE) &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)    ___            X_MT     ___            &kp HOME      &kp PG_DN     &kp PG_UP     &kp END         X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     &sk LALT      &sk LGUI      &sk LCTRL     &sk LSHFT     &kp ESC             X_MM     &kp LA(C)           &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT       X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤

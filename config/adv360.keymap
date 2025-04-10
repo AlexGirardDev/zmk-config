@@ -112,16 +112,46 @@
 #define X_RH    &none &none &none &none &none
 
 
-
+/ {
+    behaviors {
+        tk_n1: tk_n1 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_n2: tk_n2 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_n4: tk_n4 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_n5: tk_n5 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_f12: tk_f12 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_sqt: tk_sqt { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_cm: tk_cm { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_p: tk_p { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_y: tk_y { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_f6: tk_f6 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_a: tk_a { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_i: tk_i { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_f5: tk_f5 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_sl: tk_sl { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_q: tk_q { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_j: tk_j { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_k: tk_k { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_x: tk_x { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+        tk_bspc: tk_bspc { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+    };
+};
 
 #define CONFIG_WIRELESS 1
 
 #define CUSTOM_GAME \
-&kp GRAVE  &kp N1     &kp N2     &kp N3      &kp N4  &kp N5  &kp F12                                                                &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
+&kp GRAVE  &tk_n1 N1    &tk_n2 N2    &kp N3     &tk_n4 N4 &tk_n5 N5 &tk_f12 F12                                              &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
+&kp TAB    &tk_sqt SQT  &tk_cm COMMA &kp PERIOD &tk_p P    &tk_y Y    &tk_f6 F6                                                                 &kp F10   &kp F   &kp G          &kp C   &kp R     &kp L      ___ \
+&kp ESC    &tk_a A      &kp O        &kp E      &kp U      &tk_i I    &tk_f5 F5      ___   &kp LALT     ___  ___                      &kp F11   &kp D   &kp H          &kp T   &kp N     &kp S      &kp ENTER \
+&kp LSHFT  &tk_sl SLASH &tk_q Q      &tk_j J    &tk_k K    &tk_x X                         &kp DEL      &kp PRINTSCREEN                               &kp B   &kp M          &kp W   &kp V     &kp Z      ___  \
+&kp LCTRL  &kp UP       &kp DOWN     &kp LBKT   &kp N9                &kp SPACE  &tk_bspc BSPC &to DEF  &kp LGUI &kp LSHFT              &kp LWIN        ___  &none   &kp LEFT  &kp RIGHT  &kp K_APP \
+
+/*&kp GRAVE  &kp N1     &kp N2     &kp N3      &kp N4  &kp N5  &kp F12                                                                &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
 &kp TAB    &kp SQT    &kp COMMA  &kp PERIOD  &kp P   &kp Y   &kp F6                                                                 &kp F10   &kp F   &kp G          &kp C   &kp R     &kp L      ___ \
-    &kp ESC    &kp A      &kp O      &kp E   &kp U   &kp I   &kp F5     ___       &kp LALT      ___         ___                      &kp F11  &kp D   &kp H          &kp T   &kp N     &kp S      &kp ENTER \
+&kp ESC    &kp A      &kp O      &kp E   &kp U   &kp I   &kp F5     ___       &kp LALT      ___         ___                      &kp F11  &kp D   &kp H          &kp T   &kp N     &kp S      &kp ENTER \
 &kp LSHFT  &kp SLASH  &kp Q      &kp J       &kp K   &kp X                        &kp DEL       &kp PRINTSCREEN                               &kp B   &kp M          &kp W   &kp V     &kp Z      ___ \
 &kp LCTRL  &kp UP     &kp DOWN   &kp LBKT    &kp N9          &kp SPACE  &kp BSPC  &to DEF     &kp LGUI      &kp LSHFT              &kp LWIN        ___  &none   &kp LEFT  &kp RIGHT  &kp K_APP \
+*/
+
 
 /* source the main keymap */
 
