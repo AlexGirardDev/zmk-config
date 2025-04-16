@@ -228,21 +228,22 @@ ZMK_TRI_STATE(swapper,
     bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
     ignored-key-positions = <LT2>;
 )
+
 // misc aliases
 #define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
 /* Keymap */
 
 //ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)  // FN + NUM --> SYS
 //ZMK_CONDITIONAL_LAYER(sys2, NAV SYMBOL, SYS)  // FN + NUM --> SYS
+//
 
 ZMK_LAYER(new,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &quote_dbl    &semi_comma   &colon_period &kp P         &kp Y           X_MT     &kp F         &kp G         &bad_copy         &kp R         &kp L           X_RT
+    X_LT     &quote_dbl    &semi_comma   &colon_period &kp P         &kp Y           X_MT     &kp F         &kp G         &kp C         &kp R         &kp L           X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    // X_LM     &hml LALT A   &hml LGUI O   &hml LCTRL E  &hml LSHFT U  &kp I           X_MM     &kp D         &hmr LSHFT H  &hmr LCTRL T  &hmr LGUI N   &hmr LALT S     X_RM
-    X_LM     &hml LALT A   &hml LGUI O   &hml LCTRL E  &kp U        &kp I           X_MM     &kp D          &kp H          &hmr LCTRL T  &hmr LGUI N   &hmr LALT S     X_RM
+    X_LM     &hml LALT A   &hml LGUI O   &hml LCTRL E  &hml LSHFT U        &kp I           X_MM             &kp D         &hmr LSHFT H   &hmr LCTRL T  &hmr LGUI N   &hmr LALT S     X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &kp SLASH     &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &bad_tab_close         &bad_paste         &bad_undo           X_RB
+    X_LB     &kp SLASH     &kp Q         &kp J         &kp K         &kp X           X_MB     &kp B         &kp M         &kp W         &kp V         &kp Z           X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               &lt FN SPACE &lt_bspc NAV BSPC     X_MH     &sl SYMBOL   &sk LSHFT                                                  X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
