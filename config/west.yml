@@ -51,7 +51,7 @@ manifest:
 
     - name: zmk-behavior-turbo-key # This MUST match the actual directory name
       remote: local_git            # Use the remote defined above
-      revision: og               # Or your specific branch/tag
+      revision: main               # Or your specific branch/tag
       # Path where west will place this module INSIDE your workspace
       path: modules/local/zmk-behavior-turbo-key
 
