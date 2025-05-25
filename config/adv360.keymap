@@ -99,17 +99,19 @@
 #define X_RT    &none
 
 #define X_LM    &none
-//                      64?   65?   66?   67?
+//               34    64   65     35/66/67  
+//               not sure the order on right cluster
 #define X_MM    &none &none &none &none &none &none
 #define X_RM    &kp RETURN
 
 #define X_LB    &none
-#define X_MB    &none &none
+      
+#define X_MB    &kp LC(PSCRN) &none
 #define X_RB    &none
 
 #define X_LH    &none &none &none &none &none
 #define X_MH    &tog GAME  SMART_NUM
-#define X_RH    &none &none &none &none &none
+#define X_RH    &none &none &none &none
 
 
 / {
