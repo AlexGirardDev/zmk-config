@@ -98,7 +98,7 @@
 #define X_MT    &none &none 
 #define X_RT    &none
 
-#define X_LM    &none
+#define X_LM    &kp ESCAPE
 //               34    64   65     35/66/67  
 //               not sure the order on right cluster
 #define X_MM    &none &none &none &none &none &none
@@ -143,9 +143,9 @@
 #define CUSTOM_GAME \
 &kp GRAVE  &tk_n1 N1    &tk_n2 N2    &kp N3     &tk_n4 N4 &tk_n5 N5 &tk_f12 F12                                              &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
 &kp TAB    &tk_sqt SQT  &tk_cm COMMA &kp PERIOD &tk_p P    &tk_y Y    &tk_f6 F6                                                                 &kp F10   &kp F   &kp G          &kp C   &kp R     &kp L      ___ \
-&kp ESC    &tk_a A      &kp O        &kp E      &kp U      &tk_i I    &tk_f5 F5      ___   &kp LALT     ___  ___                      &kp F11   &kp D   &kp H          &kp T   &kp N     &kp S      &kp ENTER \
+&kp ESC    &tk_a A      &kp O        &kp E      &kp U      &tk_i I    &tk_f5 F5      ___   &kp LALT     ___  ___                      &kp F11   &kp D   &hmr LSHFT H   &hmr LCTRL T  &hmr LGUI N   &hmr LALT S      &kp ENTER \
 &kp LSHFT  &tk_sl SLASH &tk_q Q      &tk_j J    &tk_k K    &tk_x X                         &kp DEL      &kp PRINTSCREEN                               &kp B   &kp M          &kp W   &kp V     &kp Z      ___  \
-&kp LCTRL  &kp UP       &kp DOWN     &kp LBKT   &kp N9                &kp SPACE  &tk_bspc BSPC &to DEF  ___ ___ ___        ___  &none   &kp LEFT  &kp RIGHT  &kp K_APP \
+&kp LCTRL  &kp UP       &kp DOWN     &kp LBKT   &kp N9                &kp SPACE  &tk_bspc BSPC &to DEF  ___ ___ ___        ___  &none   ___ ___ ___  \
 
 /*&kp GRAVE  &kp N1     &kp N2     &kp N3      &kp N4  &kp N5  &kp F12                                                                &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
 &kp TAB    &kp SQT    &kp COMMA  &kp PERIOD  &kp P   &kp Y   &kp F6                                                                 &kp F10   &kp F   &kp G          &kp C   &kp R     &kp L      ___ \
