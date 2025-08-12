@@ -20,13 +20,31 @@
 #define HRC_RPAR   &hmr_rpar_gt RS(LALT) 0
 
 
+
+ZMK_COMBO(copyq,  &kp LG(GRAVE),      LT3 LT2,     DEF NAV NUM FN SYS SYMBOL GAME, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+ZMK_COMBO(syscombo,  &sl 4,   LT3 LT2 LT1 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(boot,  &bootloader,   LT4 LM4 LB4 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(boot2,  &bootloader,   RT4 RM4 RB4 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(boot2,  &kp RS(F12),   RT0 RM0 RB0 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+// ZMK_COMBO(boot,  &sys_reset,   RT3 RM3 RB3 ,  DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
+// #define DEF 0
+// #define NAV 1
+// #define NUM 2
+// #define FN 3
+// #define SYS 4
+// #define SYMBOL 5
+// #define MOUSE 6
+// #define GAME 7
+
+
 /* Horizontal combos - left hand */
 
 // ZMK_COMBO(mouse,  &smart_mouse, LT3 LT1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 // ZMK_COMBO(enter,  &kp LGUI(ENTER), LM3 LM1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 // ZMK_COMBO(pipe,  &pipe,      LT2 LT1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
-// ZMK_COMBO(tilde,  &tilde,      LT3 LT2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 //ZMK_COMBO(enter, &kp RETURN,    LM3 LM2,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
  //ZMK_COMBO(escape,  &kp ESCAPE,      LM2 LM1,     DEF        , COMBO_TERM_FAST, COMBO_IDLE_FAST)
@@ -69,22 +87,3 @@
 // ZMK_COMBO(minus, &kp MINUS,     RM1 RB1,     DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 // ZMK_COMBO(fslh,  &kp EXCL,      RM2 RB2,     DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 // ZMK_COMBO(pipe,  &kp PIPE,      RM3 RB3,     DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-
-ZMK_COMBO(syscombo,  &sl 4,   LT3 LT2 LT1 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-//ZMK_COMBO(clearbluetooth,  &bt bootloader,   LT0 LM0 LB0 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-
-ZMK_COMBO(boot,  &bootloader,   LT4 LM4 LB4 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(boot2,  &bootloader,   RT4 RM4 RB4 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(boot2,  &kp RS(F12),   RT0 RM0 RB0 ,  DEF NAV NUM FN SYS SYMBOL GAME       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-// ZMK_COMBO(boot,  &sys_reset,   RT3 RM3 RB3 ,  DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-
-// #define DEF 0
-// #define NAV 1
-// #define NUM 2
-// #define FN 3
-// #define SYS 4
-// #define SYMBOL 5
-// #define MOUSE 6
-// #define GAME 7
-
-

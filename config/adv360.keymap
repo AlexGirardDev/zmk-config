@@ -98,6 +98,8 @@
 #define X_MT    &none &none 
 #define X_RT    &none
 
+
+#define FN_LM  &kp HOME
 #define X_LM    &kp ESCAPE
 //               34    64   65     35/66/67  
 //               not sure the order on right cluster
