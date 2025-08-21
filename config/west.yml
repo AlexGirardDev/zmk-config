@@ -31,10 +31,13 @@ manifest:
     - name: local_git # You can name this remote anything descriptive
       # Use file:// followed by the ABSOLUTE path to the PARENT directory
       url-base: file:///home/alex/git
+    - name: refil
+      url-base: https://github.com/refil
 
   projects:
     - name: zmk
-      remote: zmkfirmware
+      remote: refil
+      revision: adv360-z3.5-2
       import: app/west.yml
 
     # ZMK modules
