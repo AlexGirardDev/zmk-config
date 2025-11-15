@@ -7,14 +7,11 @@
 #define FN_LM  &kp HOME
 #define X_LM    &kp ESCAPE
 
-#define X_LB  &none
 
 #define X_LH  &none //left thumb cluster
 
 #define X_RT  &none
 #define X_RM  &kp RETURN
-#define X_RB  &none
-#define X_RH  &none
 
 #define X_LB  &kp TAB
 /* #define X_LH  &kp ESC    // thumb row, left */
@@ -22,9 +19,5 @@
 #define X_RB  &kp RETURN
 #define X_RH  SMART_NUM      // thumb row, right
 
-#define X_MT 
- #define X_MM          /* activate bluetooth */
- #define X_MB
- #define X_MH
 /* source the main keymap */
 #include "base.keymap"
