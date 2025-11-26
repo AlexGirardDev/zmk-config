@@ -130,6 +130,17 @@ zmk-workspace/
 - Local modules can be added to `modules/local/`
 - Update modules with `just update`
 
+## Commit Style
+
+Use conventional commits with lowercase, concise messages:
+- `feat:` - New features
+- `fix:` - Bug fixes
+- `refactor:` - Code refactoring
+- `docs:` - Documentation changes
+- `chore:` - Maintenance tasks
+
+Example: `feat: add double-tap requirement for secondary bluetooth profiles`
+
 ## Testing & Validation
 
 ### Combo Configuration Parsing
