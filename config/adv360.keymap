@@ -1,3 +1,5 @@
+#include <dt-bindings/zmk/bt.h>
+
 /*                                 ADVANTAGE 360 KEY MATRIX / LAYOUT MAPPING
  ╭────────────────────────────┬────────────────────────────╮ ╭────────────────────────────┬────────────────────────────╮
  │  0   1   2   3   4   5   6 │  7   8   9  10  11  12  13 │ │ LN5 LN4 LN3 LN2 LN1 LN0 -- │ --  RN0 RN1 RN2 RN3 RN4 RN5│
@@ -101,9 +103,9 @@
 
 #define FN_LM  &kp HOME
 #define X_LM    &kp ESCAPE
-//               34    64   65     35/66/67  
-//               not sure the order on right cluster
-#define X_MM    &none &none &none &none &none &none
+
+//               34    64   65     66    67       35
+#define X_MM    &none &bt BT_SEL 0 &td_bt1 &td_bt2 &none &none 
 #define X_RM    &kp RETURN
 
 #define X_LB    &none
@@ -112,7 +114,7 @@
 #define X_RB    &none
 
 #define X_LH    &none &none &none &none &none
-#define X_MH    &tog GAME  SMART_NUM
+#define X_MH    &game_toggle  SMART_NUM
 #define X_RH    &none &none &none &none
 
 
@@ -137,24 +139,47 @@
         tk_k: tk_k { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
         tk_x: tk_x { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
         tk_bspc: tk_bspc { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
+
+        td_bt1: tap_dance_bt1 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&none>, <&bt BT_SEL 1>;
+        };
+
+        td_bt2: tap_dance_bt2 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&none>, <&bt BT_SEL 2>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        combo_bt_reset {
+            timeout-ms = <30>;
+            key-positions = <64 65>;
+            bindings = <&bt BT_CLR>;
+        };
     };
 };
 
 #define CONFIG_WIRELESS 1
 
-#define CUSTOM_GAME \
+#define CUSTOM_WOW \
 &kp GRAVE  &tk_n1 N1    &tk_n2 N2    &kp N3     &tk_n4 N4 &tk_n5 N5 &tk_f12 F12                                              &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
 &kp TAB    &tk_sqt SQT  &tk_cm COMMA &kp PERIOD &tk_p P    &tk_y Y    &tk_f6 F6                                                                 &kp F10   &kp F   &kp G          &kp C   &kp R     &kp L      &kp SEMI \
 &kp ESC    &tk_a A      &kp O        &kp E      &kp U      &tk_i I    &tk_f5 F5      ___   &kp LALT     ___  ___                      &kp F11   &kp D   &hmr LSHFT H   &hmr LCTRL T  &hmr LGUI N   &hmr LALT S      &kp ENTER \
 &kp LSHFT  &tk_sl SLASH &tk_q Q      &tk_j J    &tk_k K    &tk_x X                         &kp DEL      &kp PRINTSCREEN                               &kp B   &kp M          &kp W   &kp V     &kp Z      ___  \
 &kp LCTRL  &kp UP       &kp DOWN     &kp LBKT   &kp N9                &kp SPACE  &tk_bspc BSPC &to DEF  ___ ___ ___        ___  &none   ___ ___ ___  \
 
-/*&kp GRAVE  &kp N1     &kp N2     &kp N3      &kp N4  &kp N5  &kp F12                                                                &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
-&kp TAB    &kp SQT    &kp COMMA  &kp PERIOD  &kp P   &kp Y   &kp F6                                                                 &kp F10   &kp F   &kp G          &kp C   &kp R     &kp L      ___ \
-&kp ESC    &kp A      &kp O      &kp E   &kp U   &kp I   &kp F5     ___       &kp LALT      ___         ___                      &kp F11  &kp D   &kp H          &kp T   &kp N     &kp S      &kp ENTER \
-&kp LSHFT  &kp SLASH  &kp Q      &kp J       &kp K   &kp X                        &kp DEL       &kp PRINTSCREEN                               &kp B   &kp M          &kp W   &kp V     &kp Z      ___ \
-&kp LCTRL  &kp UP     &kp DOWN   &kp LBKT    &kp N9          &kp SPACE  &kp BSPC  &to DEF     &kp LGUI      &kp LSHFT              &kp LWIN        ___  &none   &kp LEFT  &kp RIGHT  &kp K_APP \
-*/
+#define CUSTOM_GAME \
+&kp GRAVE  &kp N1     &kp N2     &kp N3     &kp N4  &kp N5  &kp F12                                                                &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
+&kp TAB    &kp SQT    &kp COMMA  &kp PERIOD &kp P   &kp Y   &kp F6                                                                 &kp F10   &kp F   &kp G          &kp C   &kp R     &kp L      &kp SEMI \
+&kp ESC    &kp A      &kp O      &kp E      &kp U   &kp I   &kp F5     ___   &kp LALT     ___  ___                      &kp F11   &kp D   &kp H          &kp T   &kp N     &kp S      &kp ENTER \
+&kp LSHFT  &kp SLASH  &kp Q      &kp J      &kp K   &kp X                    &kp DEL      &kp PRINTSCREEN                               &kp B   &kp M          &kp W   &kp V     &kp Z      ___  \
+&kp LCTRL  &kp UP     &kp DOWN   &kp LBKT   &kp N9         &kp SPACE  &kp BSPC  &to DEF  ___ ___ ___        ___  &none   ___ ___ ___  \
 
 
 /* source the main keymap */
