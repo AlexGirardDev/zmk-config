@@ -24,13 +24,10 @@ manifest:
   remotes:
     - name: urob
       url-base: https://github.com/urob
-    # - name: alex
-    #   url-base: https://github.com/alexgirarddev
+    - name: alex
+      url-base: https://github.com/AlexGirardDev
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: local_git # You can name this remote anything descriptive
-      # Use file:// followed by the ABSOLUTE path to the PARENT directory
-      url-base: file:///home/alex/git
     - name: refil
       url-base: https://github.com/refil
 
@@ -52,18 +49,10 @@ manifest:
     - name: zmk-tri-state
       path: modules/zmk/tri-state
 
-    - name: zmk-behavior-turbo-key # This MUST match the actual directory name
-      remote: local_git            # Use the remote defined above
-      revision: main               # Or your specific branch/tag
-      # Path where west will place this module INSIDE your workspace
+    - name: zmk-behavior-turbo-key
+      remote: alex
+      revision: main
       path: modules/local/zmk-behavior-turbo-key
-
-
-    # - name: zmk-behavior-key-tempo # This MUST match the actual directory name
-    #   remote: local_git            # Use the remote defined above
-    #   revision: main               # Or your specific branch/tag
-    #   # Path where west will place this module INSIDE your workspace
-    #   path: modules/local/zmk-behavior-key-tempo
 
     # Temporarily overload Zephyr until
     # https://github.com/zmkfirmware/zephyr/pull/40 is merged.

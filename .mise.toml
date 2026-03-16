@@ -1,0 +1,12 @@
+[tools]
+python = "3.12"
+cmake = "3.28"
+ninja = "1.12"
+just = "1.40"
+jq = "1.7"
+
+[env]
+_.python.venv = { path = ".venv", create = true }
+ZMK_BUILD_DIR = "{{config_root}}/.build"
+ZMK_SRC_DIR = "{{config_root}}/zmk/app"
+ZEPHYR_SDK_INSTALL_DIR = "{{config_root}}/.zephyr-sdk"

@@ -76,10 +76,6 @@ clean:
 clean-all: clean
     rm -rf .west zmk
 
-# clear nix cache
-clean-nix:
-    nix-collect-garbage --delete-old
-
 # parse & plot keymap
 draw:
     #!/usr/bin/env bash
@@ -88,11 +84,48 @@ draw:
     yq -Yi '.combos.[].l = ["Combos"]' "{{ draw }}/base.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -k "ferris/sweep" >"{{ draw }}/base.svg"
 
+# install python dependencies into venv
+install-deps:
+    pip install -r requirements.txt
+    @if [ -f zephyr/scripts/requirements.txt ]; then \
+        pip install -r zephyr/scripts/requirements.txt; \
+    fi
+
+# download and install zephyr sdk
+setup-sdk version="0.16.8":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    sdk_dir="${ZEPHYR_SDK_INSTALL_DIR:-.zephyr-sdk}"
+    if [[ -d "$sdk_dir/zephyr-sdk-{{ version }}" ]]; then
+        echo "Zephyr SDK {{ version }} already installed in $sdk_dir"
+        exit 0
+    fi
+
+    os=$(uname -s | tr '[:upper:]' '[:lower:]')
+    arch=$(uname -m)
+    [[ "$arch" == "arm64" ]] && arch="aarch64"
+
+    base_url="https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v{{ version }}"
+    mkdir -p "$sdk_dir"
+
+    echo "Downloading Zephyr SDK {{ version }} minimal..."
+    curl -fL "$base_url/zephyr-sdk-{{ version }}_${os}-${arch}_minimal.tar.xz" | tar -xJ -C "$sdk_dir"
+
+    echo "Downloading ARM toolchain..."
+    curl -fL "$base_url/toolchain_${os}-${arch}_arm-zephyr-eabi.tar.xz" | tar -xJ -C "$sdk_dir/zephyr-sdk-{{ version }}"
+
+    # Register SDK with cmake
+    mkdir -p ~/.cmake/packages/Zephyr-sdk
+    echo "$sdk_dir/zephyr-sdk-{{ version }}" > ~/.cmake/packages/Zephyr-sdk/zmk-config-sdk
+
+    echo "Zephyr SDK {{ version }} installed to $sdk_dir"
+
 # initialize west
-init:
+init: install-deps
     west init -l config
     west update --fetch-opt=--filter=blob:none
     west zephyr-export
+    just install-deps
 
 # list build targets
 list:
@@ -102,9 +135,12 @@ list:
 update:
     west update --fetch-opt=--filter=blob:none
 
-# upgrade zephyr-sdk and python dependencies
-upgrade-sdk:
-    nix flake update --flake .
+# upgrade python dependencies
+upgrade-deps:
+    pip install --upgrade -r requirements.txt
+    @if [ -f zephyr/scripts/requirements.txt ]; then \
+        pip install --upgrade -r zephyr/scripts/requirements.txt; \
+    fi
 
 [no-cd]
 test $testpath *FLAGS:
