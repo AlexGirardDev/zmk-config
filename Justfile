@@ -127,6 +127,14 @@ init: install-deps
     west zephyr-export
     just install-deps
 
+# watch for bootloader device and flash firmware
+flash:
+    ./flash.sh
+
+# build and flash firmware
+build-flash expr *west_args: (build expr west_args)
+    ./flash.sh
+
 # list build targets
 list:
     @just _parse_targets all | sed 's/,*$//' | sort | column

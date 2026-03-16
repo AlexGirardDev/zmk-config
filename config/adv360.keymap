@@ -108,10 +108,10 @@ ZMK_LAYER(new,
 // #define X_LT    &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp F12     &kp F9 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &none \
 //                 &kp TAB
 
-#define X_LT    &none &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &none     &none &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &none \
+#define X_LT    &none &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp C_PP     &none &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &none \
                 &kp TAB
 
-#define X_MT    &none &kp K_PP
+#define X_MT    &none &kp C_VOL_UP
 #define X_RT    &none
 
 
@@ -119,7 +119,7 @@ ZMK_LAYER(new,
 #define X_LM    &kp ESCAPE
 
 //               34    64   65     66    67       35
-#define X_MM    &none &bt BT_SEL 0 &td_bt1 &td_bt2 &none &kp K_VOL_UP 
+#define X_MM    &none &bt BT_SEL 0 &td_bt1 &td_bt2 &none &kp C_VOL_DN 
 #define X_RM    &kp RETURN
 
 #define X_LB    &none
@@ -127,7 +127,7 @@ ZMK_LAYER(new,
 #define X_MB    &kp LC(PSCRN) &none
 #define X_RB    &none
 
-#define X_LH    &none &none &none &none &kp K_VOL_DN 
+#define X_LH    &none &none &none &none &kp C_VOL_DN 
 #define X_MH    &game_toggle  SMART_NUM
 #define X_RH    &none &none &none &none
 
