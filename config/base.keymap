@@ -230,10 +230,10 @@ ZMK_TAP_DANCE(copy_cut,
 
 ZMK_TAP_DANCE(screen_shot,
     tapping-term-ms = <200>;
-    bindings = <&kp PSCRN>, <&kp LC(PSCRN)>;
+    bindings = <&kp PSCRN>, <&kp LS(PSCRN)>;
 )
 
-// Windows sleep key
+// Windows sleep ke
 ZMK_MACRO(win_sleep,
     wait-ms = <500>;
     tap-ms = <50>;

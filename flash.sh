@@ -7,8 +7,8 @@ set -euo pipefail
 # per bootloader appearance, waiting for reconnect between halves.
 declare -A KEYBOARDS=(
     ["ADV360PRO"]="firmware/adv360_left.uf2"
-    # To add more keyboards:
-    # ["NICENANOV2"]="firmware/corne_left.uf2"
+    ["NICENANO"]="firmware/handwired65-nice_nano_v2.uf2"
+    ["NRF52BOOT"]="firmware/handwired65-nice_nano_v2.uf2"
 )
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
