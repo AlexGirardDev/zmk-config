@@ -66,41 +66,63 @@ echo "Known labels: ${!KEYBOARDS[*]}"
 echo "Put your keyboard into bootloader mode."
 echo ""
 
+# Track remaining files per label: label -> "file1 file2 ..."
+declare -A REMAINING
 for label in "${!KEYBOARDS[@]}"; do
-    read -ra files <<< "${KEYBOARDS[$label]}"
-    file_index=0
+    REMAINING[$label]="${KEYBOARDS[$label]}"
+done
 
-    while (( file_index < ${#files[@]} )); do
-        fw="${SCRIPT_DIR}/${files[$file_index]}"
-
-        if [[ ! -f "$fw" ]]; then
-            echo "Firmware not found: $fw"
-            echo "Run 'just build adv360' first."
-            exit 1
-        fi
-
-        # Wait for device to appear
-        while ! find_device "$label" &>/dev/null; do
-            sleep "$POLL_INTERVAL"
-        done
-
-        echo "[$label] Detected! ($(basename "$fw"))"
-        if flash_file "$label" "$fw"; then
-            echo "  Flashed $(basename "$fw")!"
-            (( file_index++ ))
-
-            # If more files to flash, wait for disconnect then prompt
-            if (( file_index < ${#files[@]} )); then
-                wait_for_disconnect "$label"
-                echo ""
-                echo "Now put the other half into bootloader mode..."
-            fi
-        else
-            echo "  Flash failed, will retry..."
-            sleep 2
-        fi
-        echo ""
+while true; do
+    # Check if anything left to flash
+    any_left=false
+    for label in "${!REMAINING[@]}"; do
+        [[ -n "${REMAINING[$label]}" ]] && any_left=true && break
     done
+    $any_left || break
+
+    # Poll for any known device
+    found_label=""
+    for label in "${!REMAINING[@]}"; do
+        [[ -z "${REMAINING[$label]}" ]] && continue
+        if find_device "$label" &>/dev/null; then
+            found_label="$label"
+            break
+        fi
+    done
+
+    if [[ -z "$found_label" ]]; then
+        sleep "$POLL_INTERVAL"
+        continue
+    fi
+
+    # Flash the next file for this device
+    read -ra files <<< "${REMAINING[$found_label]}"
+    fw="${SCRIPT_DIR}/${files[0]}"
+
+    if [[ ! -f "$fw" ]]; then
+        echo "Firmware not found: $fw"
+        echo "Run 'just build' first."
+        exit 1
+    fi
+
+    echo "[$found_label] Detected! ($(basename "$fw"))"
+    if flash_file "$found_label" "$fw"; then
+        echo "  Flashed $(basename "$fw")!"
+
+        # Remove the flashed file from the list
+        REMAINING[$found_label]="${files[*]:1}"
+
+        # If more files for this label, wait for disconnect and prompt
+        if [[ -n "${REMAINING[$found_label]}" ]]; then
+            wait_for_disconnect "$found_label"
+            echo ""
+            echo "Now put the other half into bootloader mode..."
+        fi
+    else
+        echo "  Flash failed, will retry..."
+        sleep 2
+    fi
+    echo ""
 done
 
 echo "All devices flashed. Done!"
