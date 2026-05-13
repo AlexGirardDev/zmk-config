@@ -1,0 +1,22 @@
+#include <zephyr/sys/util_macro.h>
+
+#define TURBO_KEY(KEY) \
+    tk_##KEY: tk_##KEY { \
+        compatible = "zmk,behavior-turbo-key"; \
+        #binding-cells = <1>; \
+        display-name = #KEY; \
+    };
+#define MAKE_TURBO(...) FOR_EACH(TURBO_KEY, (), __VA_ARGS__)
+
+/ {
+    behaviors {
+        MAKE_TURBO(N1, N2, N4, N5, F12, SQT, COMMA, P, Y, F6, A, I, F5, Q, J, K, X, BSPC)
+
+        tk_SLASH: tk_SLASH {
+            compatible = "zmk,behavior-turbo-key";
+            #binding-cells = <1>;
+            display-name = "SLASH";
+            delay-ms = <200>;
+        };
+    };
+};

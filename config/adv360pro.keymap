@@ -1,4 +1,5 @@
 #include <dt-bindings/zmk/bt.h>
+#include "turbo.dtsi"
 
 /*                                 ADVANTAGE 360 KEY MATRIX / LAYOUT MAPPING
  ╭────────────────────────────┬────────────────────────────╮ ╭────────────────────────────┬────────────────────────────╮
@@ -146,31 +147,12 @@ ZMK_LAYER(new,
 
 / {
     behaviors {
-        tk_n1: tk_n1 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_n2: tk_n2 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_n4: tk_n4 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_n5: tk_n5 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_f12: tk_f12 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_sqt: tk_sqt { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_cm: tk_cm { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_p: tk_p { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_y: tk_y { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_f6: tk_f6 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_a: tk_a { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_i: tk_i { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_f5: tk_f5 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_sl: tk_sl { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_q: tk_q { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_j: tk_j { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_k: tk_k { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_x: tk_x { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-        tk_bspc: tk_bspc { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };
-
         td_bt1: tap_dance_bt1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&none>, <&bt BT_SEL 1>;
+            display-name = "BT 1";
         };
 
         td_bt2: tap_dance_bt2 {
@@ -178,6 +160,7 @@ ZMK_LAYER(new,
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&none>, <&bt BT_SEL 2>;
+            display-name = "BT 2";
         };
     };
 
@@ -194,11 +177,11 @@ ZMK_LAYER(new,
 #define CONFIG_WIRELESS 1
 
 #define CUSTOM_WOW \
-&kp GRAVE  &tk_n1 N1    &tk_n2 N2    &kp N3     &tk_n4 N4 &tk_n5 N5 &tk_f12 F12                                              &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
-&kp TAB    &tk_sqt SQT  &tk_cm COMMA &kp PERIOD &tk_p P    &tk_y Y    &tk_f6 F6                                                                 &kp F10   &kp F   &kp G          &kp C   &kp R     &kp L      &kp SEMI \
-&kp ESC    &tk_a A      &kp O        &kp E      &kp U      &tk_i I    &tk_f5 F5      ___   &kp LALT     ___  ___                      &kp F11   &kp D   &hmr LSHFT H   &hmr LCTRL T  &hmr LGUI N   &hmr LALT S      &kp ENTER \
-&kp LSHFT  &tk_sl SLASH &tk_q Q      &tk_j J    &tk_k K    &tk_x X                         &kp DEL      &kp PRINTSCREEN                               &kp B   &kp M          &kp W   &kp V     &kp Z      ___  \
-&kp LCTRL  &kp UP       &kp DOWN     &kp LBKT   &kp N9                &kp SPACE  &tk_bspc BSPC &to DEF  ___ ___ ___        ___  &none   ___ ___ ___  \
+&kp GRAVE  &tk_N1 N1    &tk_N2 N2    &kp N3     &tk_N4 N4 &tk_N5 N5 &tk_F12 F12                                              &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \
+&kp TAB    &tk_SQT SQT  &tk_COMMA COMMA &kp PERIOD &tk_P P    &tk_Y Y    &tk_F6 F6                                                                 &kp F10   &kp F   &kp G          &kp C   &kp R     &kp L      &kp SEMI \
+&kp ESC    &tk_A A      &kp O        &kp E      &kp U      &tk_I I    &tk_F5 F5      ___   &kp LALT     ___  ___                      &kp F11   &kp D   &hmr LSHFT H   &hmr LCTRL T  &hmr LGUI N   &hmr LALT S      &kp ENTER \
+&kp LSHFT  &tk_SLASH SLASH &tk_Q Q      &tk_J J    &tk_K K    &tk_X X                         &kp DEL      &kp PRINTSCREEN                               &kp B   &kp M          &kp W   &kp V     &kp Z      ___  \
+&kp LCTRL  &kp UP       &kp DOWN     &kp LBKT   &kp N9                &kp SPACE  &tk_BSPC BSPC &to DEF  ___ ___ ___        ___  &none   ___ ___ ___  \
 
 #define CUSTOM_GAME \
 &kp GRAVE  &kp N1     &kp N2     &kp N3     &kp N4  &kp N5  &kp F12                                                                &kp F9    &kp N6  &kp N7         &kp N8  &kp N9    &kp N0     ___ \

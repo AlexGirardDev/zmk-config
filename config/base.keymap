@@ -64,6 +64,7 @@
         bindings = <HOLD>, <TAP>; \
         hold-trigger-key-positions = <TRIGGER_POS>; \
         hold-trigger-on-release; \
+        display-name = ZMK_HELPER_STRINGIFY(NAME); \
     )
 MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)  // left-hand HRMs
 MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
@@ -79,8 +80,8 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
     hold-trigger-key-positions = <0>;
 
 &mt { MT_CORE };
-ZMK_HOLD_TAP(mt_home, bindings = <&masked_home>, <&kp>; MT_CORE)
-ZMK_HOLD_TAP(mt_end, bindings = <&masked_end>, <&kp>; MT_CORE)
+ZMK_HOLD_TAP(mt_home, bindings = <&masked_home>, <&kp>; MT_CORE display-name = "Home";)
+ZMK_HOLD_TAP(mt_end, bindings = <&masked_end>, <&kp>; MT_CORE display-name = "End";)
 
 #define NAV_LEFT  &mt_home 0   LEFT    // tap: left  | long-tap: beginning of line
 #define NAV_RIGHT &mt_end 0    RIGHT   // tap: right | long-tap: end       of line
@@ -94,6 +95,7 @@ ZMK_HOLD_TAP(mt_end, bindings = <&masked_end>, <&kp>; MT_CORE)
     ZMK_MOD_MORPH(NAME, \
         bindings = <BINDING>, <BINDING>; \
         mods = <MODS>; \
+        display-name = ZMK_HELPER_STRINGIFY(NAME); \
     )
 MASK_MODS(masked_home, (MOD_LCTL), &kp HOME)
 MASK_MODS(masked_end,  (MOD_LCTL), &kp END)
@@ -104,6 +106,7 @@ MASK_MODS(masked_end,  (MOD_LCTL), &kp END)
 ZMK_MOD_MORPH(smart_shft,
     bindings = <&sk LSHFT>, <&caps_word>;
     mods = <(MOD_LSFT)>;
+    display-name = "Shift";
 )
 &caps_word {  // mods deactivate caps-word, requires PR #1451
     /delete-property/ ignore-modifiers;
@@ -116,22 +119,26 @@ ZMK_HOLD_TAP(smart_num,
     tapping-term-ms = <200>;
     quick-tap-ms = <QUICK_TAP_MS>;
     bindings = <&mo>, <&num_dance>;
+    display-name = "Num";
 )
 
 
 ZMK_TAP_DANCE(num_dance,
     tapping-term-ms = <200>;
     bindings = <&num_word NUM>, <&sl NUM>;  // reverse this for sticky-num on single tap
+    display-name = "Num";
 )
 
 ZMK_TAP_DANCE(game_toggle,
     tapping-term-ms = <200>;
     bindings = <&to WOW>, <&to GAME>;
+    display-name = "Game";
 )
 
 ZMK_TAP_DANCE(mute_pp,
     tapping-term-ms = <200>;
     bindings = <&kp C_PP>, <&kp C_MUTE>;
+    display-name = "Play/Mute";
 )
 
 // reuse basic mod-morph scheme
@@ -139,6 +146,7 @@ ZMK_TAP_DANCE(mute_pp,
     ZMK_MOD_MORPH(NAME, \
         mods = <(MOD_L ## MOD|MOD_R ## MOD)>; \
         bindings = <BINDING1>, <BINDING2>; \
+        display-name = ZMK_HELPER_STRINGIFY(NAME); \
     )
 
   
@@ -194,6 +202,7 @@ ZMK_HOLD_TAP(lt_spc,
     tapping-term-ms = <200>;
     quick-tap-ms = <QUICK_TAP_MS>;
     bindings = <&mo>, <&spc_morph>;
+    display-name = "Space";
 )
 
 ZMK_HOLD_TAP(lt_bspc,
@@ -201,6 +210,7 @@ ZMK_HOLD_TAP(lt_bspc,
     tapping-term-ms = <200>;
     quick-tap-ms = <QUICK_TAP_MS>;
     bindings = <&mo>, <&bspc_delete>;
+    display-name = "Bspc";
 )
 
 SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &kp ESCAPE)
@@ -220,17 +230,20 @@ ZMK_MACRO(dot_spc,
     wait-ms = <0>;
     tap-ms = <5>;
     bindings = <&kp DOT &kp SPACE &sk LSHFT>;
+    display-name = ". Spc Shft";
 )
 
 // tap: copy | double-tap: cut
 ZMK_TAP_DANCE(copy_cut,
     tapping-term-ms = <200>;
     bindings = <&kp LC(C)>, <&kp LC(X)>;
+    display-name = "Copy/Cut";
 )
 
 ZMK_TAP_DANCE(screen_shot,
     tapping-term-ms = <200>;
     bindings = <&kp PSCRN>, <&kp LS(PSCRN)>;
+    display-name = "PrtSc";
 )
 
 // Windows sleep ke
@@ -238,11 +251,13 @@ ZMK_MACRO(win_sleep,
     wait-ms = <500>;
     tap-ms = <50>;
     bindings = <&kp LG(X) &kp U &kp S>;
+    display-name = "Sleep";
 )
 // Alt+Tab swapper, requires PR #1366
 ZMK_TRI_STATE(swapper,
     bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
     ignored-key-positions = <LT2>;
+    display-name = "AltTab";
 )
 
 // misc aliases
