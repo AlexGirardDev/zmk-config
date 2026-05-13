@@ -144,7 +144,6 @@ ZMK_LAYER(new,
 )                                               
 */
 
-
 / {
     behaviors {
         tk_n1: tk_n1 { compatible = "zmk,behavior-turbo-key"; #binding-cells = <1>; };

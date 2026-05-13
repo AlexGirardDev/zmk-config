@@ -1,8 +1,0 @@
-file_format: "1"
-id: handwired65
-name: Handwired 65%
-type: shield
-url: https://github.com/AlexGirardDev/zmk-config
-requires: [nice_nano_v2]
-features:
-  - keys

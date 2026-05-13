@@ -1,3 +1,4 @@
 west
 keymap-drawer==0.21.0
 yq
+setuptools<81
