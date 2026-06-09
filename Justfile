@@ -82,7 +82,7 @@ draw:
     set -euo pipefail
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/adv360pro.keymap" --virtual-layers Combos >"{{ draw }}/base.yaml"
     yq -Yi '.combos.[].l = ["Combos"]' "{{ draw }}/base.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -k "ferris/sweep" >"{{ draw }}/base.svg"
+    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -z adv360pro >"{{ draw }}/base.svg"
 
 # install python dependencies into venv
 install-deps:
