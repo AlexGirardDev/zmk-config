@@ -13,12 +13,11 @@
 #define NAV 1
 #define NUM 2
 #define FN 3
-#define SYS 4
-#define SYMBOL 5
-#define WOW 6
-#define GAME 7
-#define QWERTY 8
-#define FN2 9
+#define SYMBOL 4
+#define WOW 5
+#define GAME 6
+#define QWERTY 7
+#define FN2 8
 
 /*                                 ADVANTAGE 360 KEY MATRIX / LAYOUT MAPPING
  ╭────────────────────────────┬────────────────────────────╮ ╭────────────────────────────┬────────────────────────────╮
@@ -334,15 +333,15 @@ ZMK_TRI_STATE(swapper,
 ZMK_LAYER(new,
     &none      &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &none                                                                              &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
     &kp TAB    &quote_dbl     &semi_comma    &colon_period  &kp P          &kp Y          &none                                                                              &kp C_VOL_DN   &kp F          &kp G          &kp C          &kp R          &kp L          &none
-    &kp ESCAPE &hml LALT A    &hml LGUI O    &hml LCTRL E   &hml LSHFT U   &kp I          &none           &bt BT_SEL 0   &td_bt1        &td_bt2        &to QWERTY  &mute_pp  &kp D          &hmr LSHFT H   &hmr LCTRL T   &hmr LGUI N    &hmr LALT S    &kp RETURN
-    &kp LSHFT  &kp SLASH      &kp Q          &kp J          &kp K          &kp X                                         &kp LG(LA(D))  &tog QWERTY                          &kp B          &kp M          &kp W          &kp V          &kp Z          &none
+    &kp ESCAPE &hml LALT A    &hml LGUI O    &hml LCTRL E   &hml LSHFT U   &kp I          &none           &bt BT_SEL 0   &td_bt1        &td_bt2        &none  &mute_pp                 &kp D          &hmr LSHFT H   &hmr LCTRL T   &hmr LGUI N    &hmr LALT S    &kp RETURN
+    &kp LSHFT  &kp SLASH      &kp Q          &kp J          &kp K          &kp X                                         &kp LG(LA(D))  &tog QWERTY                                         &kp B          &kp M          &kp W          &kp V          &kp Z          &none
     &kp LCTRL  &none          &none          &none          &none                                &lt FN SPACE   &lt_bspc NAV BSPC &game_toggle SMART_NUM                  &mo SYMBOL &kp LSHFT      &none          &none          &none          &none          &none
 )
 
 ZMK_LAYER(nav,
     &none      &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &none                                                                              &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
     &kp TAB    &kp LG(GRAVE)  &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)      &kp LA(E)      &none                                                                              &kp C_VOL_DN   ___            ___            &kp PG_DN      &kp PG_UP      ___            &none
-    &kp HOME   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp END        &none           &bt BT_SEL 0   &td_bt1        &td_bt2        &to QWERTY  &mute_pp  ___            &sk LSHFT      &sk LCTRL      &sk LGUI       &sk LALT       &kp RETURN
+    &kp HOME   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp END        &none           &bt BT_CLR   &bt BT_NXT        &td_bt2        ___  &mute_pp  ___            &sk LSHFT      &sk LCTRL      &sk LGUI       &sk LALT       &kp RETURN
     &kp LSHFT  &kp LC(Z)      &kp LC(A)      &copy_cut      &kp LC(V)      ___                                           &kp LG(LA(D))  &tog QWERTY                          ___            ___            ___            ___            ___            &none
     &kp LCTRL  &none          &none          &none          &kp C_VOL_DN                  ___            ___            &game_toggle SMART_NUM                   ___        ___            &none          &none          &none          &none          &none
 )
@@ -350,7 +349,7 @@ ZMK_LAYER(nav,
 ZMK_LAYER(num,
     &none      &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &none                                                                              &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
     &kp TAB    ___            ___            ___            ___            ___            &none                                                                              &kp C_VOL_DN   ___            &kp N7         &kp N8         &kp N9         ___            &none
-    &kp ESCAPE &sk LALT       &sk LGUI       &sk LCTRL      &sk LSHFT      ___            &none           &bt BT_SEL 0   &td_bt1        &td_bt2        &to QWERTY  &mute_pp  ___            &kp N4         &kp N5         &kp N6         &kp N0         &kp RETURN
+    &kp ESCAPE &sk LALT       &sk LGUI       &sk LCTRL      &sk LSHFT      ___            &none           &bt BT_CLR_ALL   &td_bt1        &td_bt2        ___  &mute_pp  ___            &kp N4         &kp N5         &kp N6         &kp N0         &kp RETURN
     &kp LSHFT  ___            ___            ___            ___            ___                                           &kp LG(LA(D))  &tog QWERTY                          ___            &kp N1         &kp N2         &kp N3         ___            &none
     &kp LCTRL  &none          &none          &none          &kp C_VOL_DN                  ___            ___            &game_toggle SMART_NUM                   ___        ___            &none          &none          &none          &none          &none
 )
@@ -358,24 +357,16 @@ ZMK_LAYER(num,
 ZMK_LAYER(fn,
     &none      &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &none                                                                              &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
     &kp TAB    &kp F12        &kp F7         &kp F8         &kp F9         &kp K_VOL_UP   &none                                                                              &kp C_VOL_DN   ___            ___            ___            ___            ___            &none
-    &kp ESCAPE &kp F11        &kp F4         &kp F5         &kp F6         &kp K_VOL_DN   &none           &bt BT_SEL 0   &td_bt1        &td_bt2        &to QWERTY  &mute_pp  ___            ___            ___            ___            ___            &kp RETURN
+    &kp ESCAPE &kp F11        &kp F4         &kp F5         &kp F6         &kp K_VOL_DN   &none           &bt BT_SEL 0   &td_bt1        &td_bt2        ___  &mute_pp  ___            ___            ___            ___            ___            &kp RETURN
     &kp LSHFT  &kp F10        &kp F1         &kp F2         &kp F3         &screen_shot                                  &kp LG(LA(D))  &tog QWERTY                          ___            ___            ___            ___            ___            &none
-    &kp LCTRL  &none          &none          &none          &kp C_VOL_DN                  ___            ___            &game_toggle SMART_NUM                   ___        ___            &none          &none          &none          &none          &none
-)
-
-ZMK_LAYER(sys,
-    &none      &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &none                                                                              &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
-    &kp TAB    &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_CLR     &bt BT_CLR_ALL &none                                                                              &kp C_VOL_DN   &studio_unlock ___            ___            ___            ___            &none
-    &kp ESCAPE ___            ___            ___            ___            &bootloader    &none           &bt BT_SEL 0   &td_bt1        &td_bt2        &to QWERTY  &mute_pp  &bootloader    ___            ___            ___            ___            &kp RETURN
-    &kp LSHFT  ___            ___            ___            ___            &sys_reset                                    &kp LG(LA(D))  &tog QWERTY                          &sys_reset     ___            ___            ___            ___            &none
     &kp LCTRL  &none          &none          &none          &kp C_VOL_DN                  ___            ___            &game_toggle SMART_NUM                   ___        ___            &none          &none          &none          &none          &none
 )
 
 ZMK_LAYER(symbol,
     &none      &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &none                                                                              &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
     &kp TAB    ___            ___            ___            ___            ___            &none                                                                              &kp C_VOL_DN   &tilde_grave   &kp MINUS      &kp EQUAL      &kp UNDER      &kp PLUS       &none
-    &kp ESCAPE &sk LALT       &sk LGUI       &sk LCTRL      &sk LSHFT      ___            &none           &bt BT_SEL 0   &td_bt1        &td_bt2        &to QWERTY  &mute_pp  &kp PIPE       &kp LPAR       &l_bkt         &kp LBRC       ___            &kp RETURN
-    &kp LSHFT  ___            ___            ___            ___            ___                                           &kp LG(LA(D))  &tog QWERTY                          &kp BSLH       &kp RPAR       &r_bkt         &kp RBRC       ___            &none
+    &kp ESCAPE &sk LALT       &sk LGUI       &sk LCTRL      &sk LSHFT      ___            &none           &bt BT_SEL 0   &td_bt1        &td_bt2        ___  &mute_pp                        &kp PIPE       &kp LPAR       &l_bkt         &kp LBRC       ___            &kp RETURN
+    &kp LSHFT  ___            ___            ___            ___            ___                                           &kp LG(LA(D))  &tog QWERTY                                         &kp BSLH       &kp RPAR       &r_bkt         &kp RBRC       ___            &none
     &kp LCTRL  &none          &none          &none          &kp C_VOL_DN                  ___            ___            &game_toggle SMART_NUM                   ___        ___            &none          &none          &none          &none          &none
 )
 
@@ -385,13 +376,14 @@ ZMK_LAYER(wow,
     &kp ESC    &tk_A A        &kp O          &kp E          &kp U          &tk_I I        &tk_F5 F5       ___            &kp LALT       ___            ___                   &kp F11        &kp D          &hmr LSHFT H   &hmr LCTRL T   &hmr LGUI N    &hmr LALT S    &kp ENTER
     &kp LSHFT  &tk_SLASH SLASH &tk_Q Q       &tk_J J        &tk_K K        &tk_X X                                       &kp DEL        &kp PRINTSCREEN                      &kp B          &kp M          &kp W          &kp V          &kp Z          ___
     &kp LCTRL  &kp UP         &kp DOWN       &kp LBKT       &kp N9                        &kp SPACE      &tk_BSPC BSPC  &to DEF        ___            ___            ___    ___            &none          ___            ___            ___
+
 )
 
 ZMK_LAYER(game,
     &kp GRAVE  &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &kp F12                                                                            &kp F9         &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         ___
     &kp TAB    &kp SQT        &kp COMMA      &kp PERIOD     &kp P          &kp Y          &kp F6                                                                             &kp F10        &kp F          &kp G          &kp C          &kp R          &kp L          &kp SEMI
     &kp ESC    &kp A          &kp O          &kp E          &kp U          &kp I          &kp F5          ___            &kp LALT       ___            ___                   &kp F11        &kp D          &kp H          &kp T          &kp N          &kp S          &kp ENTER
-    &kp LSHFT  &kp SLASH      &kp Q          &kp J          &kp K          &kp X                                         &kp DEL        &kp PRINTSCREEN                      &kp B          &kp M          &kp W          &kp V          &kp Z          ___
+    &kp LSHFT  &kp SLASH      &kp Q          &kp J          &kp K          &kp X                                         &kp DEL        &kp PRINTSCREEN                                     &kp B          &kp M          &kp W          &kp V          &kp Z          ___
     &kp LCTRL  &kp UP         &kp DOWN       &kp LBKT       &kp N9                        &kp SPACE      &kp BSPC       &to DEF         ___            ___            ___    ___            &none          ___            ___            ___
 )
 //set colorcolumn=15,30,45,60,75,90,105,120,134,135,150,165,180,195,210,225,240,255
@@ -404,18 +396,26 @@ ZMK_LAYER(game,
   - ] / }
 
   */
+  /*
+    &none      &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &none                                                                              &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
+    &kp TAB    &quote_dbl     &semi_comma    &colon_period  &kp P          &kp Y          &none                                                                              &kp C_VOL_DN   &kp F          &kp G          &kp C          &kp R          &kp L          &none
+    &kp ESCAPE &hml LALT A    &hml LGUI O    &hml LCTRL E   &hml LSHFT U   &kp I          &none           &bt BT_SEL 0   &td_bt1        &td_bt2        &to QWERTY  &mute_pp                 &kp D          &hmr LSHFT H   &hmr LCTRL T   &hmr LGUI N    &hmr LALT S    &kp RETURN
+    &kp LSHFT  &kp SLASH      &kp Q          &kp J          &kp K          &kp X                                         &kp LG(LA(D))  &tog QWERTY                                         &kp B          &kp M          &kp W          &kp V          &kp Z          &none
+    &kp LCTRL  &none          &none          &none          &none                                &lt FN SPACE   &lt_bspc NAV BSPC &game_toggle SMART_NUM                  &mo SYMBOL &kp LSHFT      &none          &none          &none          &none          &none
+)
+  * */
 ZMK_LAYER(qwerty,
-    &kp GRAVE  &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &kp F12                                                                       &kp C_VOL_UP            &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &kp MINUS
-    &kp TAB    &kp Q          &kp W          &kp E          &kp R          &kp T          &kp F6                                                                        &kp C_VOL_DN            &kp Y          &kp U          &kp I          &kp O          &kp P          &kp BSLH
-    &kp ESCAPE &kp A          &kp S          &kp D          &kp F          &kp G          &kp F5                                                                        &mute_pp                &kp H          &kp J          &kp K          &kp L          &kp SEMI       &kp ENTER
-    &kp LSHFT  &kp Z          &kp X          &kp C          &kp V          &kp B                                        &to DEF           ___                                                   &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH       &kp APOS
-    &kp LCTRL  ___            ___            &kp LALT       &kp LWIN                      &kp SPACE      &kp BSPC       &mo FN            ___                  &mo FN         &kp LWIN           ___            ___            &kp LBKT            &kp RBKT       &kp EQUAL
+    &kp GRAVE  &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &kp F12                                                                    &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &kp MINUS
+    &kp TAB    &kp Q          &kp W          &kp E          &kp R          &kp T          &kp F6                                                                     &kp C_VOL_DN   &kp Y          &kp U          &kp I          &kp O          &kp P          &kp BSLH
+    &kp ESCAPE &kp A          &kp S          &kp D          &kp F          &kp G          &kp F5         ___            ___            ___            ___            &mute_pp       &kp H          &kp J          &kp K          &kp L          &kp SEMI       &kp ENTER
+    &kp LSHFT  &kp Z          &kp X          &kp C          &kp V          &kp B                                        ___            &to DEF                                      &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH       &kp APOS
+    &kp LCTRL  ___            ___            &kp LALT       &kp LWIN                      &kp SPACE      &kp BSPC       &mo FN2         ___            &mo FN2        &kp LWIN                      ___            ___            &kp LBKT       &kp RBKT       &kp EQUAL
 )
 
 ZMK_LAYER(fn2,
     &kp F1     &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         ___                                                                        ___            &kp F7         &kp F8         &kp F9         &kp F10        &kp F11        &kp F12
-    ___        ___            ___            ___            ___            ___            ___                                                                        ___            ___            ___            ___            ___            ___            ___
-    &kp HOME   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp END        ___            ___            ___            ___            ___            ___            ___            ___            ___            ___            ___            ___
-    ___        ___            ___            ___            ___            &kp PSCRN                                    ___            ___                                          ___            ___            ___            ___            ___            ___
+    ___        ___            ___            ___            ___            ___            ___                                                                        ___            &tilde_grave   &kp MINUS      &kp EQUAL      &kp UNDER      &kp PLUS       ___
+    &kp HOME   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp END        ___            ___            ___            ___            ___            ___            &kp PIPE       &kp LPAR       &l_bkt         &kp LBRC       ___            ___
+    ___        ___            ___            ___            ___            &kp PSCRN                                    ___            ___                                          &kp BSLH       &kp RPAR       &r_bkt         &kp RBRC       ___            ___
     ___        ___            ___            ___            ___                           ___            ___            ___            ___            ___            ___                           ___            ___            ___            ___            ___
 )

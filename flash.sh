@@ -6,7 +6,7 @@ set -euo pipefail
 # files. For split keyboards with the same label, the script flashes one file
 # per bootloader appearance, waiting for reconnect between halves.
 declare -A KEYBOARDS=(
-    ["ADV360PRO"]="firmware/adv360_left.uf2"
+    ["ADV360PRO"]="firmware/adv360pro_left.uf2"
     ["NICENANO"]="firmware/handwired65-nice_nano_v2.uf2"
     ["NRF52BOOT"]="firmware/handwired65-nice_nano_v2.uf2"
 )
