@@ -8,11 +8,11 @@
         display-name = #KEY; \
     };
 #define MAKE_TURBO(...) FOR_EACH(TURBO_KEY, (), __VA_ARGS__)
+#define TK(KEY) &tk_##KEY KEY
 
 / {
     behaviors {
-        MAKE_TURBO(N1, N2, N4, N5, F12, SQT, COMMA, P, Y, F6, A, I, F5, Q, J, K, X, BSPC)
-
+        MAKE_TURBO( A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, N0, N1, N2, N3, N4, N5, N6, N7, N8, N9, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, COMMA, SQT, BSPC)
         tk_SLASH: tk_SLASH {
             compatible = "zmk,behavior-turbo-key";
             #binding-cells = <1>;
