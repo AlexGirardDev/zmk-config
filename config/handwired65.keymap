@@ -1,0 +1,76 @@
+/*
+ * Copyright (c) 2024 Alex Girard
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * Standard QWERTY layout for hand-wired 65% keyboard
+ *
+ * NOTE: This keymap uses all 75 matrix positions (15x5).
+ * Positions without a physical switch use &none.
+ * After wiring to the MCU, test each key and adjust the
+ * transform/keymap if keys don't match expected positions.
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/reset.h>
+
+
+#define XXX &none
+#define ___ &none
+#define DEF 0
+#define FN  1
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        combo_bootloader {
+            timeout-ms = <200>;
+            key-positions = <14 29 44>; /* Del + PgUp + PgDn */
+            bindings = <&bootloader>;
+        };
+
+        combo_bt_clear {
+           timeout-ms = <200>;
+            key-positions = <44 58 14 59>; /* PgDn + Up + Del + End */
+            bindings = <&bt BT_CLR>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+// ┌──────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
+// │  ESC │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │  -  │  =  │BKSP │ DEL │
+// ├──────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+// │ TAB  │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  [  │  ]  │  \  │PgUp │
+// ├──────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+// │ CAPS │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  '  │     │ENTER│PgDn │
+// ├──────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+// │LSHFT │     │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │RSHFT│  ▲  │ END │
+// ├──────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+// │LCTRL │ GUI │LALT │     │     │SPACE│RALT │     │     │     │  FN │RCTRL│  ◄  │  ▼  │  ►  │
+// └──────┴─────┴─N447Z────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
+                &kp esc     &kp N1    &kp N2    &kp N3  &kp N4  &kp N5    &kp N6   &kp N7  &kp N8     &kp N9     &kp N0    &kp MINUS  &kp EQUAL  &kp BSPC   &kp DEL
+                &kp TAB    &kp Q     &kp W     &kp E   &kp R   &kp T     &kp Y    &kp U   &kp I      &kp O      &kp P     &kp LBKT   &kp RBKT   &kp BSLH   &kp PG_UP
+                &kp CAPS   &kp A     &kp S     &kp D   &kp F   &kp G     &kp H    &kp J   &kp K      &kp L      &kp SEMI  &kp SQT    &none      &kp RET    &kp PG_DN
+                &kp LSHFT  &kp Z     &kp X     &kp C   &kp V   &kp B     &kp N    &kp M   &kp COMMA  &kp DOT   &kp FSLH ___   &kp RSHFT  &kp UP     &kp END
+                &kp LCTRL  &kp LGUI  &kp LALT  ___     ___     &kp SPACE ___      ___     ___        &kp RALT   &mo FN    &kp RCTRL  &kp LEFT   &kp DOWN   &kp RIGHT
+            >;
+        };
+
+        fn_layer {
+            bindings = <
+                &kp GRAVE  &kp F1    &kp F2    &kp F3  &kp F4  &kp F5  &kp F6     &kp F7  &kp F8     &kp F9     &kp F10   &kp F11    &kp F12    &trans     &bt BT_NXT
+                &trans     &trans    &trans    &trans  &trans  &trans  &trans     &trans  &trans     &trans     &kp PSCRN &trans     &trans     &trans     &kp HOME
+                &trans     &trans    &trans    &trans  &trans  &trans  &trans     &trans  &trans     &trans     &trans    &trans     &none      &trans     &kp END
+                &trans     &none     &trans    &trans  &trans  &trans  &trans     &trans  &trans     &trans     &trans    &trans     &trans     &kp C_VOL_UP &bt BT_CLR
+                &trans     &trans    &trans    &none   &none   &none   &trans     &none   &none      &trans     &trans    &trans     &kp C_PREV &kp C_VOL_DN &kp C_NEXT
+            >;
+        };
+    };
+};

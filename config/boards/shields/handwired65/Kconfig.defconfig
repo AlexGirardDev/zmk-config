@@ -1,0 +1,9 @@
+# Copyright (c) 2024 Alex Girard
+# SPDX-License-Identifier: MIT
+
+if SHIELD_HANDWIRED65
+
+config ZMK_KEYBOARD_NAME
+    default "Handwired 65"
+
+endif
