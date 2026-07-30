@@ -309,6 +309,15 @@ ZMK_TRI_STATE(swapper,
             display-name = "BT 1";
         };
 
+        td_disc: tap_dance_disc {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LC(LS(M))>, <&kp LC(LS(D))> ;
+            display-name = "BT 1";
+        };
+
+
         td_bt2: tap_dance_bt2 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -345,19 +354,29 @@ ZMK_TRI_STATE(swapper,
 * */
 
 
+/*
+*
+SIMPLE_MORPH(quote_dbl, SFT, &kp DQT, &kp SQT)
+SIMPLE_MORPH(semi_comma, SFT, &kp SEMI, &kp COMMA)
+SIMPLE_MORPH(colon_period, SFT, &kp PERIOD,&kp COLON )
+' "
 
+
+
+o
+*/
 
 ZMK_LAYER(dvorak,
     &kp GRAVE  &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &kp F12                                                                    &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
     &kp TAB    &quote_dbl     &semi_comma    &colon_period  &kp P          &kp Y          &kp F6                                                                     &kp C_VOL_DN   &kp F          &kp G          &kp C          &kp R          &kp L          &none
-    &kp ESCAPE &kp A          &kp O          &kp E          &kp U          &kp I          &kp F5         &bt BT_SEL 0   &td_bt1        &td_bt2        &none         &mute_pp        &kp D          &kp H          &kp T          &kp N          &kp S    &kp RETURN
+    &kp ESCAPE &kp A          &kp O          &kp E          &kp U          &kp I          &kp F5       &kp LC(PRINTSCREEN)  &kp SPACE      &bt BT_SEL 0   &td_bt1                         &mute_pp        &kp D          &kp H          &kp T          &kp N          &kp S    &kp RETURN
     &kp LSHFT  &kp SLASH      &kp Q          &kp J          &kp K          &kp X                                        &kp LG(LA(D))  &to QWRTY                                    &kp B          &kp M          &kp W          &kp V          &kp Z          &none
     &kp LCTRL  &kp UP         &kp DOWN       &kp LWIN       &kp LALT                                     &lt FN SPACE   &lt_bspc NAV BSPC &game_toggle &none         &mo FN2       &kp LWIN       &none          &none          &none          &none          &none
 )
 
 ZMK_LAYER(nav,
     ___      &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &none                                                                              &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
-    ___    &kp LG(GRAVE)  &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)      &kp LA(E)      &none                                                                              &kp C_VOL_DN   ___            ___            &kp PG_DN      &kp PG_UP      ___            &none
+    ___    &kp LG(GRAVE)  &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)      &kp LC(LS(L))      &none                                                                              &kp C_VOL_DN   ___            ___            &kp PG_DN      &kp PG_UP      ___            &none
     &kp HOME   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp END        &none           &bt BT_CLR   &bt BT_NXT        &td_bt2        ___  &mute_pp  ___            ___      ___      ___       ___       &kp RETURN
     ___  &kp LC(Z)      &kp LC(A)      &copy_cut      &kp LC(V)      ___                                           &kp LG(LA(D))  ___                          ___            ___            ___            ___            ___            &none
     ___        &none          &none          &none          &kp C_VOL_DN                  ___            ___            &game_toggle SMART_NUM                   ___        ___            &none          &none          &none          &none          &none
@@ -390,7 +409,7 @@ ZMK_LAYER(symbol,
 ZMK_LAYER(wow,
     &kp GRAVE  TK(N1)      TK(N2)      &kp N3         TK(N4)      TK(N5)      TK(F12)                                                                       &kp F9         &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         ___
     &kp TAB    TK(SQT)   TK(COMMA) &kp PERIOD    TK(P)          TK(Y)          TK(F6)                                                                        &kp F10        &kp F          &kp G          &kp C          &kp R          &kp L          &kp SEMI
-    &kp ESC    TK(A)         &kp O          &kp E          &kp U          TK(I)         TK(F5)        ___            &kp LALT       ___            ___                   &kp F11        &kp D          &hmr LSHFT H   &hmr LCTRL T   &hmr LGUI N    &hmr LALT S    &kp ENTER
+    &kp ESC    TK(A)         &kp O          &kp E          &kp U          TK(I)         TK(F5)        &kp LC(PRINTSCREEN)            &kp LALT       ___            ___                   &kp F11        &kp D          &hmr LSHFT H   &hmr LCTRL T   &hmr LGUI N    &hmr LALT S    &kp ENTER
     &kp LSHFT  TK(SLASH) TK(Q)       TK(J)         TK(K)         TK(X)                                        &kp DEL        &kp PRINTSCREEN                      &kp B          &kp M          &kp W          &kp V          &kp Z          ___
     &kp LCTRL  &kp UP         &kp DOWN       &kp LBKT       &kp N9                        &kp SPACE      TK(BSPC) &to DEF        ___            ___            ___    ___            &none          ___            ___            ___
 
