@@ -332,6 +332,14 @@ ZMK_TRI_STATE(swapper,
             bindings = <&kp LG(D)>, <&kp LG(LA(D))>;
             display-name = "Dictate";
         };
+
+        td_dictate2: td_dictate2 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp F11>, <&kp LG(F11)>;
+            display-name = "Dictate2";
+        };
     };
 
     combos {
@@ -376,26 +384,26 @@ o
 
 ZMK_LAYER(dvorak,
     &kp GRAVE  &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &kp F12                                                                    &kp C_VOL_UP   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
-    &kp TAB    &kp APOS       &kp COMMA      &kp DOT        &kp P          &kp Y          &kp F6                                                                     &kp C_VOL_DN   &kp F          &kp G          &kp C          &kp R          &kp L          &kp SLASH
-    &kp ESCAPE &kp A          &kp O          &kp E          &kp U          &kp I          &kp F5         &td_dictate    &td_disc        &bt BT_SEL 0   &td_bt1       &mute_pp       &kp D          &kp H          &kp T          &kp N          &kp S          &kp RETURN
-    &kp LSHFT  &kp SEMI       &kp Q          &kp J          &kp K          &kp X                                        &kp DEL         &to QWRTY                                   &kp B          &kp M          &kp W          &kp V          &kp Z           &none
+    &kp TAB    &kp APOS       &kp COMMA      &kp DOT        &kp P          &kp Y          &kp F6                                                                     &kp C_VOL_DN   &kp F          &kp G          &kp C          &kp R          &kp L          &none
+    &kp ESCAPE &kp A          &kp O          &kp E          &kp U          &kp I          &kp F5         &td_dictate    &td_dictate2        &td_disc   &kp F10       &mute_pp      &kp D          &kp H          &kp T          &kp N          &kp S          &kp RETURN
+    &kp LSHFT  &kp SEMI       &kp Q          &kp J          &kp K          &kp X                                        &kp DEL         &to QWRTY                                   &kp B          &kp M          &kp W          &kp V          &kp Z           &kp SLASH
     &kp LCTRL  &kp UP         &kp DOWN       &kp LWIN       &kp LALT                      &kp SPACE      &kp BSPC       &mo NAV         SMART_NUM          &mo NAV                  &kp LWIN       &kp LEFT          &kp RIGHT          &none          &none           &none
 )
 
 
 ZMK_LAYER(dvorak_old,
-    &kp GRAVE  &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &kp F12                                                                    ___   &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
-    &kp TAB    &quote_dbl     &semi_comma    &colon_period  &kp P          &kp Y          &kp F6                                                                             ___   &kp F          &kp G          &kp C          &kp R          &kp L          &none
+    &kp GRAVE  &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &kp F12                                                                            ___    &kp N6         &kp N7         &kp N8         &kp N9         &kp N0         &none
+    &kp TAB    &quote_dbl     &semi_comma    &colon_period  &kp P          &kp Y          &kp F6                                                                             ___    &kp F          &kp G          &kp C          &kp R          &kp L          &none
     &kp ESCAPE &kp A          &kp O          &kp E          &kp U          &kp I          &kp F5       &kp LC(PRINTSCREEN)  &kp SPACE  &bt BT_SEL 0   &td_bt1                ___    &kp D          &kp H          &kp T          &kp N          &kp S    &kp RETURN
     &kp LSHFT  &kp SLASH      &kp Q          &kp J          &kp K          &kp X                                        &to DEF        &to QWRTY                                    &kp B          &kp M          &kp W          &kp V          &kp Z          &none
     &kp LCTRL  &kp UP         &kp DOWN       &kp LWIN       &kp LALT                      &lt NAV SPACE   &lt_bspc NAV BSPC &game_toggle &none         &mo NAV       &kp LWIN       &none          &none          &none          &none          &none
 )
 ZMK_LAYER(fn,
     &kp F1     &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         ___                                                                              ___            &kp F7         &kp F8         &kp F9         &kp F10        &kp F11        &kp F12
-    ___        ___            &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)      &kp LC(LS(L))  ___                                                                              ___            &tilde_grave   &kp MINUS      &kp EQUAL      &kp UNDER      &kp PLUS       &none
-    &kp HOME   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp END        ___           &bt BT_CLR     &bt BT_NXT     &td_bt2        &kp LC(LS(D))  &kp C_MUTE     &kp PIPE       &kp LPAR       &l_bkt         &kp LBRC       &kp PG_UP      ___
+    ___        &kp LG(GRAVE)   &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)      &kp LC(LS(L))  ___                                                                              ___            &tilde_grave   &kp MINUS      &kp EQUAL      &kp UNDER      &kp PLUS       ___
+    &kp HOME   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp END        ___           &bt BT_CLR     &bt BT_NXT     &td_bt2        ___  ___    &kp PIPE       &kp LPAR       &l_bkt         &kp LBRC       &kp PG_UP      ___
     ___        &kp LC(Z)      &kp LC(A)      &copy_cut      &kp LC(V)      &screen_shot                                ___             &to DVOLD                           &kp BSLH       &kp RPAR       &r_bkt         &kp RBRC       &kp PG_DN      ___
-    ___        &none          &none          &none          &kp C_VOL_DN                  ___            &kp DEL        ___            SMART_NUM                    ___            ___            ___            ___            ___            ___            ___
+    ___        ___          ___          ___          ___                  ___            ___        ___            ___                    ___            ___            ___            ___            ___            ___            ___
 )
 
 ZMK_LAYER(num,
