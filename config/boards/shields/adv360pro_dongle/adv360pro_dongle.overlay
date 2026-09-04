@@ -1,0 +1,7 @@
+/*
+ * Copyright (c) 2026 Alex Girard
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "adv360pro_dongle.dtsi"
