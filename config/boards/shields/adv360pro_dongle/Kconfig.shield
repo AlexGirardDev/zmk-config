@@ -1,0 +1,5 @@
+# Copyright (c) 2026 Alex Girard
+# SPDX-License-Identifier: MIT
+
+config SHIELD_ADV360PRO_DONGLE
+    def_bool $(shields_list_contains,adv360pro_dongle)

@@ -23,10 +23,12 @@
 
 ZMK_COMBO(copyq,  &kp LG(GRAVE),      LT3 LT2,     0 1 2 3 4 5, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-ZMK_COMBO(boot,  &bootloader,   LT4 LM4 LB4 ,  0 1 2 3 4 5       , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(boot,  &bootloader,   LT4 LM4 LB4 ,  0 1 2 3 4 5, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(boot2,  &bootloader,   RT4 RM4 RB4 ,  0 1 2 3 4 5, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(boot2,  &kp RS(F12),   RT0 RM0 RB0 ,  0 1 2 3 4 5, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+// Each ZMK_COMBO name becomes a devicetree node name, so reusing a name silently
+// overwrites the earlier combo. `boot2` was defined twice, and the RS(F12) one
+// won -- which meant the right-half bootloader combo did not exist at all.
+ZMK_COMBO(boot,     &bootloader,   LT4 LM4 LB4,  0 1 2 3 4 5, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(boot2,    &bootloader,   RT4 RM4 RB4,  0 1 2 3 4 5, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(sft_f12,  &kp RS(F12),   RT0 RM0 RB0,  0 1 2 3 4 5, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 // ZMK_COMBO(boot,  &sys_reset,   RT3 RM3 RB3 ,  DEF        , COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 
 // #define DEF 0

@@ -1,0 +1,26 @@
+# Copyright (c) 2026 Alex Girard
+# SPDX-License-Identifier: MIT
+
+if SHIELD_ADV360PRO_DONGLE
+
+config ZMK_KEYBOARD_NAME
+    default "Adv360 Dongle"
+
+# The dongle is the split central: it owns USB/BLE output to the host and both
+# halves connect to it as peripherals.
+config ZMK_USB
+    default y
+
+config ZMK_BLE
+    default y
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
+endif
