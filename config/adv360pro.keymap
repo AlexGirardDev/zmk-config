@@ -417,9 +417,9 @@ ZMK_LAYER(dvorak_old,
     &kp LCTRL  &kp UP         &kp DOWN       &kp LWIN       &kp LALT                      &lt NAV SPACE   &lt_bspc NAV BSPC &game_toggle &none         &mo NAV       &kp LWIN       &none          &none          &none          &none          &none
 )
 ZMK_LAYER(fn,
-    &kp F1     &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         ___                                                                              ___            &kp F7         &kp F8         &kp F9         &kp F10        &kp F11        &kp F12
-    ___        &kp LG(GRAVE)   &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)      &kp LC(LS(L))  ___                                                                              ___            &tilde_grave   &kp MINUS      &kp EQUAL      &kp UNDER      &kp PLUS       ___
-    &kp HOME   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp END        ___           &bt BT_CLR     &bt BT_NXT     &td_bt2        ___  ___    &kp PIPE       &kp LPAR       &l_bkt         &kp LBRC       &kp PG_UP      ___
+    &kp F1     &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         &kp F7                                                                              ___            &kp F7         &kp F8         &kp F9         &kp F10        &kp F11        &kp F12
+    ___        &kp LG(GRAVE)   &kp LC(LS(TAB)) &kp LC(TAB)   &kp LC(W)      &kp LC(LS(L))  &kp F8                                                                              ___            &tilde_grave   &kp MINUS      &kp EQUAL      &kp UNDER      &kp PLUS       ___
+    &kp HOME   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp END        &kp F9           &bt BT_CLR     &bt BT_NXT     &td_bt2        ___  ___    &kp PIPE       &kp LPAR       &l_bkt         &kp LBRC       &kp PG_UP      ___
     ___        &kp LC(Z)      &kp LC(A)      &copy_cut      &kp LC(V)      &screen_shot                                ___             &to DVOLD                           &kp BSLH       &kp RPAR       &r_bkt         &kp RBRC       &kp PG_DN      ___
     ___        ___          ___          ___          ___                  ___            ___        ___            ___                    ___            ___            ___            ___            ___            ___            ___
 )
